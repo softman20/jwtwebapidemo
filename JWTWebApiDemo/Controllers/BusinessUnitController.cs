@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Domain.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Services.Interfaces;
+
+namespace JWTWebApiDemo.Controllers
+{
+    [Produces("application/json")]
+    [Route("api/BusinessUnit")]
+    public class BusinessUnitController : Controller
+    {
+        private readonly IBusinessUnitService _businessUnitService;
+        public BusinessUnitController(IBusinessUnitService businessUnitService)
+        {
+            _businessUnitService = businessUnitService;
+        }
+
+        public IActionResult Get()
+        {
+            var all = _businessUnitService.GetAll().Select(e=>new BusinessUnit {Name=e.Name,Id=e.Id }) .OrderBy(e=>e.Name);
+            return Ok(all);
+        }
+    }
+}

@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20180426152307_add-rolesGuid.cs" />
+    <Compile Remove="Migrations\20180426152801_add-rolesGuid1.cs" />
+    <Compile Remove="Migrations\20180426152949_add-rolesGuid1.cs" />
+    <Compile Remove="Migrations\20180507084533_userRole.cs" />
+    <Compile Remove="Migrations\20180507093328_userRole2.cs" />
+    <Compile Remove="Migrations\20180507100805_userRole5.cs" />
+    <Compile Remove="Migrations\20180507125149_userRole8.cs" />
+    <Compile Remove="Migrations\20180507125538_userRole9.cs" />
+    <Compile Remove="Migrations\20180507125647_userRole9.cs" />
+    <Compile Remove="Migrations\20180507125855_userRole9.cs" />
+    <Compile Remove="Migrations\20180507130119_userRole9.cs" />
+    <Compile Remove="Migrations\20180507130720_userRole9.cs" />
+    <Compile Remove="Migrations\20180507131758_userRole9.cs" />
+    <Compile Remove="Migrations\20180507131926_userRole9.cs" />
+    <Compile Remove="Migrations\20180507132339_userRole9.cs" />
+    <Compile Remove="Migrations\20180507132458_userRole9.cs" />
+    <Compile Remove="Migrations\20180507132753_userRole9.cs" />
+    <Compile Remove="Migrations\20180507132910_userRole9.cs" />
+    <Compile Remove="Migrations\20180507133925_userRole9.cs" />
+    <Compile Remove="Migrations\20180507134452_userRole9.cs" />
+    <Compile Remove="Migrations\20180507134938_userRole9.cs" />
+    <Compile Remove="Migrations\20180507135026_userRole9.cs" />
+    <Compile Remove="Migrations\20180507135110_userRole9.cs" />
+    <Compile Remove="Migrations\20180507135208_userRole9.cs" />
+    <Compile Remove="Migrations\20180507142031_userRole9.cs" />
+    <Compile Remove="Migrations\20180507142500_userRole9.cs" />
+    <Compile Remove="Migrations\20180507142553_userRole9.cs" />
+    <Compile Remove="Migrations\20180507142751_userRole9.cs" />
+    <Compile Remove="Migrations\20180507143001_userRole9.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LinqKit.Core" Version="1.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore">
+      <HintPath>..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.identity.entityframeworkcore\2.0.2\lib\netstandard2.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
