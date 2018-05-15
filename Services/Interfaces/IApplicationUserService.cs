@@ -15,5 +15,6 @@ namespace Services.Interfaces
         string RefreshToken(string token);
         UserDto GetUser(string sgid);
         IEnumerable<UserDto> GetAllUsers();
+        IEnumerable<UserBusinessUnit> ListBusinessUnits(ApplicationUser user);
     }
 }

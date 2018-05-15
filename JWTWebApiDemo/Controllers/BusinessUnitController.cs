@@ -25,5 +25,12 @@ namespace JWTWebApiDemo.Controllers
             var all = _businessUnitService.GetAll().Select(e=>new BusinessUnit {Name=e.Name,Id=e.Id }) .OrderBy(e=>e.Name);
             return Ok(all);
         }
+
+        [HttpGet("/api/BusinessUnitByIds")]
+        public IActionResult GetByIds([FromQuery] int[] ids)
+        {
+            var all = _businessUnitService.GetAll().Where(e=> ids.Any(o=>o==e.Id)).Select(e => new BusinessUnit { Name = e.Name, Id = e.Id }).OrderBy(e => e.Name);
+            return Ok(all);
+        }
     }
 }

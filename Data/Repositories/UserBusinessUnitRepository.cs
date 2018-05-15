@@ -31,7 +31,7 @@ namespace Data.Repositories
             catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
         }
     }

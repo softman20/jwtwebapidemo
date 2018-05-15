@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Core.Authentication.SaintGobain;
+using Core.Extensions;
 using Domain.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -82,9 +83,7 @@ namespace JWTWebApiDemo.Controllers
                 await _roleManager.CreateAsync(new ApplicationRole() { Name = "Viewer" });
 
             if (user == null)
-            {
-              
-
+            {     
                 user = new ApplicationUser
                 {
                     SgId = sgId,
@@ -100,18 +99,13 @@ namespace JWTWebApiDemo.Controllers
                 //Create User Login
                 await _userManager.AddLoginAsync(user, externalLoginInfo);
             }
-            //Add roles
-            ClaimsIdentity claimIdentity = new ClaimsIdentity();
-            var userRoles = await _userManager.GetRolesAsync(user);
-            foreach (string roleName in userRoles)
-            {
-                claimIdentity.AddClaim(new Claim(ClaimTypes.Role, roleName));
-            }
-            externalLoginInfo.Principal.AddIdentity(claimIdentity);
+           
 
-            
+            ClaimsIdentity externalClaimIdentity = externalLoginInfo.Principal.Identity as ClaimsIdentity;
+            ClaimsIdentity claimIdentity = await GetClaimIdentity(user, externalClaimIdentity);
+
             //Create JWT token
-            string token = _applicationUserService.CreateJwt(externalLoginInfo.Principal.Claims);
+            string token = _applicationUserService.CreateJwt(claimIdentity.Claims);
 
             if (string.IsNullOrEmpty(token))
             {
@@ -131,6 +125,33 @@ namespace JWTWebApiDemo.Controllers
 
             return Redirect(_webApplicationUrl + query.ToQueryString());
         }
+
+        private async Task<ClaimsIdentity> GetClaimIdentity(ApplicationUser user, ClaimsIdentity initClaimIdentity)
+        {
+            ClaimsIdentity claimIdentity = initClaimIdentity != null ? initClaimIdentity.Clone() : new ClaimsIdentity();
+            //Add roles
+
+            var userRoles = await _userManager.GetRolesAsync(user);
+            foreach (string roleName in userRoles)
+            {
+                claimIdentity.AddClaim(new Claim(ClaimTypes.Role, roleName));
+            }
+          //  externalLoginInfo.Principal.AddIdentity(claimIdentity);
+
+            //Add business units
+            IEnumerable<UserBusinessUnit> businessUnits = _applicationUserService.ListBusinessUnits(user);
+            foreach (var businessUnit in businessUnits)
+            {
+                Claim claimBu = new Claim("businessUnits", businessUnit.BUId.ToString());
+                claimIdentity.AddClaim(claimBu);
+            }
+
+            claimIdentity.AddUpdateClaim(ClaimTypes.NameIdentifier, user.SgId);
+            claimIdentity.AddUpdateClaim("sgid", user.UserName);
+
+            return claimIdentity;
+        }
+
         [HttpGet]
         [AllowAnonymous]
         [Route("logout")]

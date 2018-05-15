@@ -95,6 +95,11 @@ namespace Services
 
         }
 
+       public IEnumerable<UserBusinessUnit> ListBusinessUnits(ApplicationUser user)
+        {
+            return _userBusinessUnitRepository.Find(where: ubu => ubu.UserId == user.Id);
+        }
+
         public async Task UpdateUserAsync(UserDto user)
         {
             ApplicationUser theUser = await _userManager.FindByLoginAsync(SaintGobainDefaults.LoginProvider, user.SgId);
