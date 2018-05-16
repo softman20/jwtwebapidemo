@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IM.TCM.Core\IM.TCM.Core.csproj" />
+    <ProjectReference Include="..\IM.TCM.Data\IM.TCM.Data.csproj" />
+    <ProjectReference Include="..\IM.TCM.Domain\IM.TCM.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

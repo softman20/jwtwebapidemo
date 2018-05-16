@@ -1,0 +1,480 @@
+2018-04-23 14:51:27.648 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/users  
+2018-04-23 14:51:29.029 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 19.5564ms
+2018-04-23 14:51:29.800 +02:00 [ERR] An unhandled exception has occurred while executing the request
+System.InvalidOperationException: Unable to resolve service for type 'Services.Interfaces.IUserService' while attempting to activate 'JWTWebApiDemo.Controllers.UsersController'.
+   at Microsoft.Extensions.Internal.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2018-04-23 14:51:31.531 +02:00 [INF] Request finished in 3953.0675ms 500 text/html; charset=utf-8
+2018-04-23 14:51:31.613 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/favicon.ico  
+2018-04-23 14:51:31.706 +02:00 [INF] Request finished in 113.6801ms 404 
+2018-04-23 14:54:09.393 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/users  
+2018-04-23 14:54:09.796 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 7.5934ms
+2018-04-23 14:54:10.029 +02:00 [ERR] An unhandled exception has occurred while executing the request
+System.InvalidOperationException: Unable to resolve service for type 'Data.Repositories.Interfaces.IUserRepository' while attempting to activate 'Services.UserService'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, ISet`1 callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(Type serviceType, Type implementationType, ISet`1 callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, ISet`1 callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(Type serviceType, ISet`1 callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateCallSite(Type serviceType, ISet`1 callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.CreateServiceAccessor(Type serviceType, ServiceProvider serviceProvider)
+   at System.Collections.Concurrent.ConcurrentDictionaryExtensions.GetOrAdd[TKey,TValue,TArg](ConcurrentDictionary`2 dictionary, TKey key, Func`3 valueFactory, TArg arg)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2018-04-23 14:54:10.672 +02:00 [INF] Request finished in 1306.6012ms 500 text/html; charset=utf-8
+2018-04-23 14:54:10.683 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/favicon.ico  
+2018-04-23 14:54:10.712 +02:00 [INF] Request finished in 26.8011ms 404 
+2018-04-23 14:55:17.998 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/users  
+2018-04-23 14:55:18.765 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 14:55:18.788 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 14:55:19.241 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 14:55:19.300 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 14:55:19.442 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 1061.757ms
+2018-04-23 14:55:19.461 +02:00 [INF] Request finished in 1492.8584ms 200 application/json; charset=utf-8
+2018-04-23 14:55:19.521 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/favicon.ico  
+2018-04-23 14:55:19.693 +02:00 [INF] Request finished in 169.7485ms 404 
+2018-04-23 16:31:11.449 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/users  
+2018-04-23 16:31:11.492 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 16:31:11.499 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 16:31:11.581 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 16:31:11.587 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 16:31:11.592 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 128.38330000000002ms
+2018-04-23 16:31:11.602 +02:00 [INF] Request finished in 148.631ms 200 application/json; charset=utf-8
+2018-04-23 16:31:12.237 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/users  
+2018-04-23 16:31:12.242 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 16:31:12.246 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 16:31:12.269 +02:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 16:31:12.273 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 16:31:12.275 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 35.2946ms
+2018-04-23 16:31:12.285 +02:00 [INF] Request finished in 43.8423ms 200 application/json; charset=utf-8
+2018-04-23 17:09:36.869 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/users  
+2018-04-23 17:09:37.637 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 17:09:37.653 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 17:09:38.078 +02:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 17:09:38.139 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 17:09:38.293 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 955.1697ms
+2018-04-23 17:09:38.302 +02:00 [INF] Request finished in 1474.3411ms 200 application/json; charset=utf-8
+2018-04-23 17:09:38.344 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/favicon.ico  
+2018-04-23 17:09:38.558 +02:00 [INF] Request finished in 212.1164ms 404 
+2018-04-23 17:42:32.674 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/users  
+2018-04-23 17:42:33.598 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 17:42:33.634 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 17:42:33.680 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 17:42:34.287 +02:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 17:42:34.359 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 1130.901ms
+2018-04-23 17:42:34.372 +02:00 [INF] Request finished in 1833.4793ms 200 application/json; charset=utf-8
+2018-04-23 17:42:34.423 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/favicon.ico  
+2018-04-23 17:42:34.654 +02:00 [INF] Request finished in 231.5716ms 404 
+2018-04-23 17:46:34.724 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/users  
+2018-04-23 17:46:35.413 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 17:46:35.429 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 17:46:35.452 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 17:46:35.839 +02:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 17:46:35.966 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 812.8073ms
+2018-04-23 17:46:35.988 +02:00 [INF] Request finished in 1293.1083ms 200 application/json; charset=utf-8
+2018-04-23 17:46:36.025 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/favicon.ico  
+2018-04-23 17:46:36.232 +02:00 [INF] Request finished in 206.3101ms 404 
+2018-04-23 18:23:05.589 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/users  
+2018-04-23 18:23:07.170 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:23:07.204 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 18:23:07.248 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:23:07.826 +02:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 18:23:07.951 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 1375.9914ms
+2018-04-23 18:23:07.988 +02:00 [INF] Request finished in 2451.5268ms 200 application/json; charset=utf-8
+2018-04-23 18:23:08.028 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/favicon.ico  
+2018-04-23 18:23:08.359 +02:00 [INF] Request finished in 336.3993ms 404 
+2018-04-23 18:23:10.470 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/users  
+2018-04-23 18:23:10.484 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:23:10.507 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 18:23:10.521 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:23:10.552 +02:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 18:23:10.560 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 80.412900000000008ms
+2018-04-23 18:23:10.595 +02:00 [INF] Request finished in 92.5335ms 200 application/json; charset=utf-8
+2018-04-23 18:23:11.114 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/users  
+2018-04-23 18:23:11.122 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:23:11.128 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 18:23:11.131 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:23:11.143 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 18:23:11.155 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 28.714100000000002ms
+2018-04-23 18:23:11.164 +02:00 [INF] Request finished in 46.23ms 200 application/json; charset=utf-8
+2018-04-23 18:23:11.620 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/users  
+2018-04-23 18:23:11.624 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:23:11.627 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 18:23:11.629 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:23:11.641 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 18:23:11.644 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 20.9587ms
+2018-04-23 18:23:11.656 +02:00 [INF] Request finished in 30.6682ms 200 application/json; charset=utf-8
+2018-04-23 18:23:11.992 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/users  
+2018-04-23 18:23:11.996 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:23:11.999 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 18:23:12.006 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:23:12.024 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 18:23:12.037 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 32.1451ms
+2018-04-23 18:23:12.073 +02:00 [INF] Request finished in 48.1143ms 200 application/json; charset=utf-8
+2018-04-23 18:23:18.300 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/Users/  
+2018-04-23 18:23:18.308 +02:00 [INF] Policy execution successful.
+2018-04-23 18:23:18.320 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:23:18.323 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 18:23:18.328 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:23:18.349 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 18:23:18.355 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 48.980000000000004ms
+2018-04-23 18:23:18.375 +02:00 [INF] Request finished in 60.8946ms 200 application/json; charset=utf-8
+2018-04-23 18:23:22.694 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:57472/api/Users/40  
+2018-04-23 18:23:22.728 +02:00 [INF] Policy execution successful.
+2018-04-23 18:23:22.737 +02:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Cors.CorsAuthorizationFilter'.
+2018-04-23 18:23:22.746 +02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-04-23 18:23:22.749 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) in 23.1137ms
+2018-04-23 18:23:22.753 +02:00 [INF] Request finished in 57.9871ms 200 
+2018-04-23 18:23:22.761 +02:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:57472/api/Users/40  
+2018-04-23 18:23:22.764 +02:00 [INF] Policy execution successful.
+2018-04-23 18:23:22.767 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:23:22.801 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) with arguments (["40"]) - ModelState is "Valid"
+2018-04-23 18:23:22.910 +02:00 [INF] Executed DbCommand (49ms) [Parameters=[@__get_Item_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[IsActive], [e].[Name], [e].[UpdatedBy], [e].[UpdatedDate]
+FROM [Users] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+2018-04-23 18:23:22.944 +02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-04-23 18:23:22.949 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) in 182.7204ms
+2018-04-23 18:23:22.958 +02:00 [INF] Request finished in 191.5799ms 200 
+2018-04-23 18:23:23.014 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/Users/  
+2018-04-23 18:23:23.019 +02:00 [INF] Policy execution successful.
+2018-04-23 18:23:23.034 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:23:23.037 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 18:23:23.045 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:23:23.063 +02:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 18:23:23.066 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 48.9315ms
+2018-04-23 18:23:23.070 +02:00 [INF] Request finished in 73.1329ms 200 application/json; charset=utf-8
+2018-04-23 18:24:30.186 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/users  
+2018-04-23 18:24:30.833 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:24:30.855 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 18:24:30.876 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:24:31.262 +02:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 18:24:31.360 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 778.4505ms
+2018-04-23 18:24:31.422 +02:00 [INF] Request finished in 1222.9948ms 200 application/json; charset=utf-8
+2018-04-23 18:24:31.471 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/favicon.ico  
+2018-04-23 18:24:31.665 +02:00 [INF] Request finished in 191.9409ms 404 
+2018-04-23 18:24:35.639 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/Users/  
+2018-04-23 18:24:35.649 +02:00 [INF] Policy execution successful.
+2018-04-23 18:24:35.659 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:24:35.662 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 18:24:35.666 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:24:35.686 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 18:24:35.691 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 47.8534ms
+2018-04-23 18:24:35.703 +02:00 [INF] Request finished in 59.2577ms 200 application/json; charset=utf-8
+2018-04-23 18:24:39.774 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:57472/api/Users/40  
+2018-04-23 18:24:39.815 +02:00 [INF] Policy execution successful.
+2018-04-23 18:24:39.825 +02:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Cors.CorsAuthorizationFilter'.
+2018-04-23 18:24:39.832 +02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-04-23 18:24:39.836 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) in 20.4331ms
+2018-04-23 18:24:39.841 +02:00 [INF] Request finished in 66.495ms 200 
+2018-04-23 18:24:39.846 +02:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:57472/api/Users/40  
+2018-04-23 18:24:39.849 +02:00 [INF] Policy execution successful.
+2018-04-23 18:24:39.852 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:24:39.880 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) with arguments (["40"]) - ModelState is "Valid"
+2018-04-23 18:24:39.969 +02:00 [INF] Executed DbCommand (45ms) [Parameters=[@__get_Item_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[IsActive], [e].[Name], [e].[UpdatedBy], [e].[UpdatedDate]
+FROM [Users] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+2018-04-23 18:24:40.047 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?'], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [Users]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;
+2018-04-23 18:24:40.061 +02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-04-23 18:24:40.064 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) in 214.57430000000002ms
+2018-04-23 18:24:40.067 +02:00 [INF] Request finished in 219.8481ms 200 
+2018-04-23 18:24:40.077 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/Users/  
+2018-04-23 18:24:40.081 +02:00 [INF] Policy execution successful.
+2018-04-23 18:24:40.084 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:24:40.092 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 18:24:40.095 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:24:40.109 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 18:24:40.114 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 32.9911ms
+2018-04-23 18:24:40.119 +02:00 [INF] Request finished in 40.7884ms 200 application/json; charset=utf-8
+2018-04-23 18:24:43.795 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:57472/api/Users/39  
+2018-04-23 18:24:43.797 +02:00 [INF] Policy execution successful.
+2018-04-23 18:24:43.802 +02:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Cors.CorsAuthorizationFilter'.
+2018-04-23 18:24:43.805 +02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-04-23 18:24:43.807 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) in 9.8042ms
+2018-04-23 18:24:43.811 +02:00 [INF] Request finished in 14.9041ms 200 
+2018-04-23 18:24:43.819 +02:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:57472/api/Users/39  
+2018-04-23 18:24:43.823 +02:00 [INF] Policy execution successful.
+2018-04-23 18:24:43.825 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:24:43.829 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) with arguments (["39"]) - ModelState is "Valid"
+2018-04-23 18:24:43.841 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__get_Item_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[IsActive], [e].[Name], [e].[UpdatedBy], [e].[UpdatedDate]
+FROM [Users] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+2018-04-23 18:24:43.864 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?'], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [Users]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;
+2018-04-23 18:24:43.879 +02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-04-23 18:24:43.882 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) in 58.9262ms
+2018-04-23 18:24:43.887 +02:00 [INF] Request finished in 67.9428ms 200 
+2018-04-23 18:24:43.895 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/Users/  
+2018-04-23 18:24:43.898 +02:00 [INF] Policy execution successful.
+2018-04-23 18:24:43.903 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:24:43.906 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 18:24:43.909 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:24:43.925 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 18:24:43.928 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 30.125ms
+2018-04-23 18:24:43.939 +02:00 [INF] Request finished in 36.0003ms 200 application/json; charset=utf-8
+2018-04-23 18:24:46.160 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:57472/api/Users/38  
+2018-04-23 18:24:46.163 +02:00 [INF] Policy execution successful.
+2018-04-23 18:24:46.170 +02:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Cors.CorsAuthorizationFilter'.
+2018-04-23 18:24:46.172 +02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-04-23 18:24:46.175 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) in 11.9962ms
+2018-04-23 18:24:46.179 +02:00 [INF] Request finished in 18.0016ms 200 
+2018-04-23 18:24:46.188 +02:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:57472/api/Users/38  
+2018-04-23 18:24:46.191 +02:00 [INF] Policy execution successful.
+2018-04-23 18:24:46.194 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:24:46.196 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) with arguments (["38"]) - ModelState is "Valid"
+2018-04-23 18:24:46.213 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@__get_Item_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[IsActive], [e].[Name], [e].[UpdatedBy], [e].[UpdatedDate]
+FROM [Users] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+2018-04-23 18:24:46.236 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?'], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [Users]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;
+2018-04-23 18:24:46.246 +02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-04-23 18:24:46.250 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) in 57.421400000000006ms
+2018-04-23 18:24:46.257 +02:00 [INF] Request finished in 65.048ms 200 
+2018-04-23 18:24:46.269 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/Users/  
+2018-04-23 18:24:46.271 +02:00 [INF] Policy execution successful.
+2018-04-23 18:24:46.277 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:24:46.285 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 18:24:46.287 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:24:46.307 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 18:24:46.311 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 37.7324ms
+2018-04-23 18:24:46.326 +02:00 [INF] Request finished in 50.2329ms 200 application/json; charset=utf-8
+2018-04-23 18:24:53.335 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:57472/api/Users/  
+2018-04-23 18:24:53.342 +02:00 [INF] Policy execution successful.
+2018-04-23 18:24:53.346 +02:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Cors.CorsAuthorizationFilter'.
+2018-04-23 18:24:53.348 +02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-04-23 18:24:53.351 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.PostUser (JWTWebApiDemo) in 10.5546ms
+2018-04-23 18:24:53.358 +02:00 [INF] Request finished in 18.9353ms 200 
+2018-04-23 18:24:53.365 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:57472/api/Users/ application/json 62
+2018-04-23 18:24:53.368 +02:00 [INF] Policy execution successful.
+2018-04-23 18:24:53.371 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:24:53.429 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.PostUser (JWTWebApiDemo) with arguments (["Domain.Models.User"]) - ModelState is "Valid"
+2018-04-23 18:24:53.472 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (Size = 4000), @p1='?', @p2='?' (Size = 4000), @p3='?', @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?'], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Users] ([CreatedBy], [CreatedDate], [Email], [IsActive], [Name], [UpdatedBy], [UpdatedDate])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [Id]
+FROM [Users]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-04-23 18:24:53.489 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:24:53.493 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.PostUser (JWTWebApiDemo) in 124.12360000000001ms
+2018-04-23 18:24:53.500 +02:00 [INF] Request finished in 133.6025ms 201 application/json; charset=utf-8
+2018-04-23 18:24:53.527 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/Users/  
+2018-04-23 18:24:53.531 +02:00 [INF] Policy execution successful.
+2018-04-23 18:24:53.538 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:24:53.545 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 18:24:53.548 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:24:53.560 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 18:24:53.564 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 32.292ms
+2018-04-23 18:24:53.575 +02:00 [INF] Request finished in 51.8759ms 200 application/json; charset=utf-8
+2018-04-23 18:24:56.178 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/Users/41  
+2018-04-23 18:24:56.183 +02:00 [INF] Policy execution successful.
+2018-04-23 18:24:56.188 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:24:56.192 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUser (JWTWebApiDemo) with arguments (["41"]) - ModelState is "Valid"
+2018-04-23 18:24:56.219 +02:00 [INF] Executed DbCommand (21ms) [Parameters=[@__get_Item_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[IsActive], [e].[Name], [e].[UpdatedBy], [e].[UpdatedDate]
+FROM [Users] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+2018-04-23 18:24:56.222 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:24:56.226 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUser (JWTWebApiDemo) in 42.2567ms
+2018-04-23 18:24:56.228 +02:00 [INF] Request finished in 50.0249ms 200 application/json; charset=utf-8
+2018-04-23 18:24:59.704 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:57472/api/Users/41  
+2018-04-23 18:24:59.707 +02:00 [INF] Policy execution successful.
+2018-04-23 18:24:59.710 +02:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Cors.CorsAuthorizationFilter'.
+2018-04-23 18:24:59.713 +02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-04-23 18:24:59.715 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.PutUser (JWTWebApiDemo) in 7.1942ms
+2018-04-23 18:24:59.720 +02:00 [INF] Request finished in 14.9599ms 200 
+2018-04-23 18:24:59.726 +02:00 [INF] Request starting HTTP/1.1 PUT http://localhost:57472/api/Users/41 application/json 178
+2018-04-23 18:24:59.729 +02:00 [INF] Policy execution successful.
+2018-04-23 18:24:59.732 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:24:59.744 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.PutUser (JWTWebApiDemo) with arguments (["41","Domain.Models.User"]) - ModelState is "Valid"
+2018-04-23 18:25:07.700 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@p7='?', @p0='?' (Size = 4000), @p1='?', @p2='?' (Size = 4000), @p3='?', @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?'], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedBy] = @p0, [CreatedDate] = @p1, [Email] = @p2, [IsActive] = @p3, [Name] = @p4, [UpdatedBy] = @p5, [UpdatedDate] = @p6
+WHERE [Id] = @p7;
+SELECT @@ROWCOUNT;
+2018-04-23 18:25:09.529 +02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 204
+2018-04-23 18:25:09.534 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.PutUser (JWTWebApiDemo) in 9802.5526ms
+2018-04-23 18:25:09.540 +02:00 [INF] Request finished in 9810.786ms 204 
+2018-04-23 18:25:09.578 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/Users/  
+2018-04-23 18:25:09.585 +02:00 [INF] Policy execution successful.
+2018-04-23 18:25:09.597 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:25:09.603 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 18:25:09.610 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:25:09.628 +02:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 18:25:09.636 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 48.889700000000005ms
+2018-04-23 18:25:09.645 +02:00 [INF] Request finished in 69.7807ms 200 application/json; charset=utf-8
+2018-04-23 18:25:36.856 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:57472/api/Users/37  
+2018-04-23 18:25:36.865 +02:00 [INF] Policy execution successful.
+2018-04-23 18:25:36.869 +02:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Cors.CorsAuthorizationFilter'.
+2018-04-23 18:25:36.871 +02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-04-23 18:25:36.873 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) in 11.6081ms
+2018-04-23 18:25:36.879 +02:00 [INF] Request finished in 25.4924ms 200 
+2018-04-23 18:25:36.884 +02:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:57472/api/Users/37  
+2018-04-23 18:25:36.886 +02:00 [INF] Policy execution successful.
+2018-04-23 18:25:36.890 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:25:36.895 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) with arguments (["37"]) - ModelState is "Valid"
+2018-04-23 18:25:36.912 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@__get_Item_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[IsActive], [e].[Name], [e].[UpdatedBy], [e].[UpdatedDate]
+FROM [Users] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+2018-04-23 18:25:36.935 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?'], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [Users]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;
+2018-04-23 18:25:36.951 +02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-04-23 18:25:36.954 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) in 67.4895ms
+2018-04-23 18:25:36.968 +02:00 [INF] Request finished in 72.3621ms 200 
+2018-04-23 18:25:36.981 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/Users/  
+2018-04-23 18:25:36.983 +02:00 [INF] Policy execution successful.
+2018-04-23 18:25:36.986 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:25:36.988 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 18:25:36.993 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:25:37.010 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 18:25:37.018 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 31.0489ms
+2018-04-23 18:25:37.031 +02:00 [INF] Request finished in 46.8815ms 200 application/json; charset=utf-8
+2018-04-23 18:25:39.600 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:57472/api/Users/36  
+2018-04-23 18:25:39.603 +02:00 [INF] Policy execution successful.
+2018-04-23 18:25:39.610 +02:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Cors.CorsAuthorizationFilter'.
+2018-04-23 18:25:39.616 +02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-04-23 18:25:39.620 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) in 15.6783ms
+2018-04-23 18:25:39.625 +02:00 [INF] Request finished in 21.6877ms 200 
+2018-04-23 18:25:39.631 +02:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:57472/api/Users/36  
+2018-04-23 18:25:39.635 +02:00 [INF] Policy execution successful.
+2018-04-23 18:25:39.641 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:25:39.644 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) with arguments (["36"]) - ModelState is "Valid"
+2018-04-23 18:25:39.662 +02:00 [INF] Executed DbCommand (15ms) [Parameters=[@__get_Item_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[CreatedBy], [e].[CreatedDate], [e].[Email], [e].[IsActive], [e].[Name], [e].[UpdatedBy], [e].[UpdatedDate]
+FROM [Users] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+2018-04-23 18:25:39.684 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?'], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [Users]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;
+2018-04-23 18:25:39.697 +02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-04-23 18:25:39.699 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.DeleteUser (JWTWebApiDemo) in 65.078ms
+2018-04-23 18:25:39.703 +02:00 [INF] Request finished in 70.9676ms 200 
+2018-04-23 18:25:39.713 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57472/api/Users/  
+2018-04-23 18:25:39.717 +02:00 [INF] Policy execution successful.
+2018-04-23 18:25:39.726 +02:00 [INF] Entity Framework Core 2.0.2-rtm-10011 initialized 'TCMContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-04-23 18:25:39.729 +02:00 [INF] Executing action method JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) with arguments (null) - ModelState is "Valid"
+2018-04-23 18:25:39.731 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2018-04-23 18:25:39.746 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[Email], [u].[IsActive], [u].[Name], [u].[UpdatedBy], [u].[UpdatedDate]
+FROM [Users] AS [u]
+2018-04-23 18:25:39.749 +02:00 [INF] Executed action JWTWebApiDemo.Controllers.UsersController.GetUsers (JWTWebApiDemo) in 32.496700000000004ms
+2018-04-23 18:25:39.753 +02:00 [INF] Request finished in 39.878ms 200 application/json; charset=utf-8
