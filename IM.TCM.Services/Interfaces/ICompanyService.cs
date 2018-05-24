@@ -8,6 +8,7 @@ namespace IM.TCM.Services.Interfaces
 {
     public interface ICompanyService : IBaseService<Company>
     {
-        IEnumerable<Company> GetCompaniesByBUAndProcessType(int businessUnitId,int processTypeId);
+        IEnumerable<Company> GetCompaniesByBUAndProcessType(int userId,int businessUnitId,int processTypeId);
+        IEnumerable<Company> GetCompaniesByBU(int businessUnitId);
     }
 }

@@ -35,6 +35,27 @@
     <Compile Remove="Migrations\20180507142751_userRole9.cs" />
     <Compile Remove="Migrations\20180507143001_userRole9.cs" />
     <Compile Remove="Migrations\20180516130912_processType.cs" />
+    <Compile Remove="Migrations\20180522130859_userAuhorization.cs" />
+    <Compile Remove="Migrations\20180522142738_processType2.cs" />
+    <Compile Remove="Migrations\20180522143314_removeProcessType.cs" />
+    <Compile Remove="Migrations\20180522145504_ProcessType3.cs" />
+    <Compile Remove="Migrations\20180522145712_ProcessType3.cs" />
+    <Compile Remove="Migrations\20180522150052_ProcessType3.cs" />
+    <Compile Remove="Migrations\20180522150533_ProcessType3.cs" />
+    <Compile Remove="Migrations\20180522150919_ProcessType3.cs" />
+    <Compile Remove="Migrations\20180522151021_ProcessType3.cs" />
+    <Compile Remove="Migrations\20180522151402_ProcessType3.cs" />
+    <Compile Remove="Migrations\20180522152102_BU3.cs" />
+    <Compile Remove="Migrations\20180522155422_BU4.cs" />
+    <Compile Remove="Migrations\20180522155701_BU4.cs" />
+    <Compile Remove="Migrations\20180523140228_ProcessType5.cs" />
+    <Compile Remove="Migrations\20180523140323_ProcessType5.cs" />
+    <Compile Remove="Migrations\20180523140644_ProcessType5.cs" />
+    <Compile Remove="Migrations\20180523141653_ProcessType5.cs" />
+    <Compile Remove="Migrations\20180523142226_ProcessType5.cs" />
+    <Compile Remove="Migrations\20180523142708_ProcessType5.cs" />
+    <Compile Remove="Migrations\20180523143424_ProcessType5.cs" />
+    <Compile Remove="Migrations\20180523143742_ProcessType6.cs" />
   </ItemGroup>
 
   <ItemGroup>

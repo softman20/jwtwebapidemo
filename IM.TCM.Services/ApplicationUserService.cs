@@ -31,10 +31,13 @@ namespace IM.TCM.Services
         private readonly IConfigurationRoot _appSettings;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IUserBusinessUnitRepository _userBusinessUnitRepository;
+        private readonly IUserAuthorizationRepository _userAuthorizationRepository;
+        private readonly ICompanyRepository _companyRepository;
 
         public ApplicationUserService(IConfigurationRoot AppSettings, IHttpContextAccessor httpContextAccessor,
             IMapper mapper, UserManager<ApplicationUser> userManager, IApplicationUserRepository applicationUserRepository,
-            IUserBusinessUnitRepository userBusinessUnitRepository, IOptions<LocalJwtBearerOptions> localJwtBearerOptions)
+            IUserBusinessUnitRepository userBusinessUnitRepository, IUserAuthorizationRepository userAuthorizationRepository,
+            ICompanyRepository companyRepository, IOptions<LocalJwtBearerOptions> localJwtBearerOptions)
             : base(applicationUserRepository)
         {
             _localJwtBearerOptions = localJwtBearerOptions.Value;
@@ -44,20 +47,26 @@ namespace IM.TCM.Services
             _httpContextAccessor = httpContextAccessor;
             _appSettings = AppSettings;
             _userBusinessUnitRepository = userBusinessUnitRepository;
+            _userAuthorizationRepository = userAuthorizationRepository;
+            _companyRepository = companyRepository;
         }
 
         public IEnumerable<UserDto> GetAllUsers()
         {
-            var allUsers = this._applicationUserRepository.GetQuery().Include(p => p.UserRoles).ThenInclude(p => p.Role)
-                                        .Include(p => p.UserBusinessUnits).ThenInclude(p => p.BusinessUnit);
+            var allUsers = this._applicationUserRepository.Find(include:e=>e.Include(p => p.Authorizations).ThenInclude(p => p.Role)
+                                        .Include(p => p.Authorizations).ThenInclude(p => p.BusinessUnit)
+                                        .Include(p => p.Authorizations).ThenInclude(p => p.CompanyCode)
+                                        .Include(p => p.Authorizations).ThenInclude(p => p.ProcessType));
 
             return _mapper.Map<IEnumerable<ApplicationUser>, IEnumerable<UserDto>>(allUsers);
         }
 
         public UserDto GetUser(string sgId)
         {
-            ApplicationUser IdentityUser = this._applicationUserRepository.Find(where: e => e.SgId == sgId, include: ps => ps.Include(p => p.UserRoles).ThenInclude(p => p.Role)
-                                            .Include(p => p.UserBusinessUnits).ThenInclude(p => p.BusinessUnit)).FirstOrDefault();
+            ApplicationUser IdentityUser = this._applicationUserRepository.Find(where:e=>e.SgId==sgId, include: e => e.Include(p => p.Authorizations).ThenInclude(p => p.Role)
+                                         .Include(p => p.Authorizations).ThenInclude(p => p.BusinessUnit)
+                                         .Include(p => p.Authorizations).ThenInclude(p => p.CompanyCode)
+                                         .Include(p => p.Authorizations).ThenInclude(p => p.ProcessType)).FirstOrDefault();
 
             return _mapper.Map<ApplicationUser, UserDto>(IdentityUser);
         }
@@ -70,21 +79,30 @@ namespace IM.TCM.Services
 
                 newUser.CreatedDate = DateTime.Now;
                 newUser.UserName = user.SgId.ToUpper();
-                newUser.CreatedBy = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                newUser.CreatedBy =  _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 newUser.IsActive = true;
-
+                newUser.Authorizations = null;
                 //Create user
                 await _userManager.CreateAsync(newUser);
-                //add roles
-                await _userManager.AddToRolesAsync(newUser, user.Roles);
-
-                //add BUs
-                _userBusinessUnitRepository.AddBusinessUnitToUser(newUser.Id, user.BusinessUnitsId);
 
                 UserLoginInfo userLoginInfo = new UserLoginInfo(SaintGobainDefaults.LoginProvider, newUser.SgId, SaintGobainDefaults.DisplayName);
                 //Create User Login
                 await _userManager.AddLoginAsync(newUser, userLoginInfo);
 
+                // add authorizations
+                foreach (var authorization in user.Authorizations)
+                {
+                    _userAuthorizationRepository.Add(new UserAuthorization
+                    {
+                        UserId = newUser.Id,
+                        BUId = authorization.BusinessUnit.Id,
+                        RoleId = authorization.Role.Id,
+                        CompanyId = authorization.CompanyCode.Id,
+                        ProcessTypeId = authorization.ProcessTypeId
+                    });
+                }
+                _userAuthorizationRepository.SaveChanges();
+              
 
                 return _mapper.Map<ApplicationUser, UserDto>(newUser);
             }
@@ -95,9 +113,12 @@ namespace IM.TCM.Services
 
         }
 
-       public IEnumerable<UserBusinessUnit> ListBusinessUnits(ApplicationUser user)
+        public IEnumerable<int> ListBusinessUnits(ApplicationUser user)
         {
-            return _userBusinessUnitRepository.Find(where: ubu => ubu.UserId == user.Id);
+            IEnumerable<int> authorizedBUs= _userAuthorizationRepository.Find(where: ubu => ubu.UserId == user.Id).Select(e=>e.BUId);
+            if (authorizedBUs.Contains(-1))
+                authorizedBUs= _companyRepository.Find(where: e => e.Id != -1).Select(e => e.Id);
+             return authorizedBUs.Distinct();
         }
 
         public async Task UpdateUserAsync(UserDto user)
@@ -111,22 +132,22 @@ namespace IM.TCM.Services
 
                 IdentityResult result = await _userManager.UpdateAsync(theUser);
 
-                if (user.Roles.Count() > 0)
+                //remove authorizations
+                _userAuthorizationRepository.DeleteMulti(where: e => e.UserId == theUser.Id);
+                _userAuthorizationRepository.SaveChanges();
+                // add authorizations
+                foreach (var authorization in user.Authorizations)
                 {
-                    //delete old roles
-                    var userRoles = await _userManager.GetRolesAsync(theUser);
-                    await _userManager.RemoveFromRolesAsync(theUser, userRoles);
-                    //update roles
-                    await _userManager.AddToRolesAsync(theUser, user.Roles);
+                    _userAuthorizationRepository.Add(new UserAuthorization
+                    {
+                        UserId = theUser.Id,
+                        BUId = authorization.BusinessUnit.Id,
+                        RoleId = authorization.Role.Id,
+                        CompanyId = authorization.CompanyCode.Id,
+                        ProcessTypeId = authorization.ProcessTypeId
+                    });
                 }
-
-                //remove BU add param
-                //add BUs
-                if (user.BusinessUnitsId.Count() > 0)
-                    _userBusinessUnitRepository.AddBusinessUnitToUser(theUser.Id, user.BusinessUnitsId, true);
-
-
-
+                _userAuthorizationRepository.SaveChanges();
             }
         }
 

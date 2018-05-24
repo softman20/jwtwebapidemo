@@ -14,7 +14,7 @@ namespace IM.TCM.Api.Controllers
 {
     [Produces("application/json")]
     [Route("api/Users")]
-  //  [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class UsersController : Controller
     {
         private readonly IApplicationUserService _applicationUserService;

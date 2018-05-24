@@ -10,6 +10,8 @@ namespace IM.TCM.Domain.Models
     {
 
         public virtual ICollection<ApplicationUserRole> UserRoles { get; set; }
-     //   public ApplicationUser User { get; set; }
+
+        public virtual ICollection<UserAuthorization> UserAuthorizations { get; set; }
+        //   public ApplicationUser User { get; set; }
     }
 }

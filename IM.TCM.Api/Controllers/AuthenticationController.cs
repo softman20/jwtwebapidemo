@@ -96,6 +96,9 @@ namespace IM.TCM.Api.Controllers
                 //Create user
                 await _userManager.CreateAsync(user);
 
+                //add roles
+                  await _userManager.AddToRoleAsync(user, "Administrator" );
+
                 //Create User Login
                 await _userManager.AddLoginAsync(user, externalLoginInfo);
             }
@@ -129,6 +132,9 @@ namespace IM.TCM.Api.Controllers
         private async Task<ClaimsIdentity> GetClaimIdentity(ApplicationUser user, ClaimsIdentity initClaimIdentity)
         {
             ClaimsIdentity claimIdentity = initClaimIdentity != null ? initClaimIdentity.Clone() : new ClaimsIdentity();
+
+            claimIdentity.AddClaim(new Claim("ID",user.Id.ToString()));
+
             //Add roles
 
             var userRoles = await _userManager.GetRolesAsync(user);
@@ -139,10 +145,10 @@ namespace IM.TCM.Api.Controllers
           //  externalLoginInfo.Principal.AddIdentity(claimIdentity);
 
             //Add business units
-            IEnumerable<UserBusinessUnit> businessUnits = _applicationUserService.ListBusinessUnits(user);
-            foreach (var businessUnit in businessUnits)
+            IEnumerable<int> userBus = _applicationUserService.ListBusinessUnits(user);
+            foreach (var userBu in userBus)
             {
-                Claim claimBu = new Claim("businessUnits", businessUnit.BUId.ToString());
+                Claim claimBu = new Claim("businessUnits", userBu.ToString());
                 claimIdentity.AddClaim(claimBu);
             }
 

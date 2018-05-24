@@ -14,6 +14,8 @@ namespace IM.TCM.Domain.Models
         
         public virtual ICollection<CompanyProcessType> CompanyProcessTypes { get;set;}
 
+        public virtual ICollection<UserAuthorization> UserAuthorizations { get; set; }
+
         [ForeignKey("BusinessUnitId")]
         public virtual BusinessUnit BusinessUnit { get; set; }
     }

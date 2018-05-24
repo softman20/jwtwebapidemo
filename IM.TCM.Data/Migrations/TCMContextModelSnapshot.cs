@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
 namespace IM.TCM.Data.Migrations
@@ -19,6 +17,47 @@ namespace IM.TCM.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("IM.TCM.Domain.Models.AccountGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BusinessUnitId");
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BusinessUnitId");
+
+                    b.ToTable("AccountGroup");
+                });
+
+            modelBuilder.Entity("IM.TCM.Domain.Models.AccountGroupProcessType", b =>
+                {
+                    b.Property<int>("AccountGroupId");
+
+                    b.Property<int>("ProcessTypeId");
+
+                    b.HasKey("AccountGroupId", "ProcessTypeId");
+
+                    b.HasIndex("ProcessTypeId");
+
+                    b.ToTable("AccountGroupProcessType");
+                });
 
             modelBuilder.Entity("IM.TCM.Domain.Models.ApplicationRole", b =>
                 {
@@ -133,17 +172,7 @@ namespace IM.TCM.Data.Migrations
 
                     b.Property<string>("Code");
 
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<bool>("IsActive");
-
                     b.Property<string>("Name");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
 
                     b.HasKey("Id");
 
@@ -193,20 +222,9 @@ namespace IM.TCM.Data.Migrations
 
             modelBuilder.Entity("IM.TCM.Domain.Models.ProcessType", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<bool>("IsActive");
+                    b.Property<int>("Id");
 
                     b.Property<string>("Name");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
 
                     b.HasKey("Id");
 
@@ -235,6 +253,31 @@ namespace IM.TCM.Data.Migrations
                     b.HasAlternateKey("UserId");
 
                     b.ToTable("RefreshToken");
+                });
+
+            modelBuilder.Entity("IM.TCM.Domain.Models.UserAuthorization", b =>
+                {
+                    b.Property<int>("UserId");
+
+                    b.Property<int>("BUId");
+
+                    b.Property<int>("CompanyId");
+
+                    b.Property<int>("RoleId");
+
+                    b.Property<int>("ProcessTypeId");
+
+                    b.HasKey("UserId", "BUId", "CompanyId", "RoleId", "ProcessTypeId");
+
+                    b.HasIndex("BUId");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasIndex("ProcessTypeId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("UserAuthorization");
                 });
 
             modelBuilder.Entity("IM.TCM.Domain.Models.UserBusinessUnit", b =>
@@ -318,6 +361,27 @@ namespace IM.TCM.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("IM.TCM.Domain.Models.AccountGroup", b =>
+                {
+                    b.HasOne("IM.TCM.Domain.Models.BusinessUnit", "BusinessUnit")
+                        .WithMany()
+                        .HasForeignKey("BusinessUnitId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("IM.TCM.Domain.Models.AccountGroupProcessType", b =>
+                {
+                    b.HasOne("IM.TCM.Domain.Models.AccountGroup", "AccountGroup")
+                        .WithMany("AccountGroupProcessType")
+                        .HasForeignKey("AccountGroupId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("IM.TCM.Domain.Models.ProcessType", "ProcessType")
+                        .WithMany("AccountGroupProcessType")
+                        .HasForeignKey("ProcessTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("IM.TCM.Domain.Models.ApplicationUserRole", b =>
                 {
                     b.HasOne("IM.TCM.Domain.Models.ApplicationRole", "Role")
@@ -356,6 +420,34 @@ namespace IM.TCM.Data.Migrations
                 {
                     b.HasOne("IM.TCM.Domain.Models.ApplicationUser", "User")
                         .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("IM.TCM.Domain.Models.UserAuthorization", b =>
+                {
+                    b.HasOne("IM.TCM.Domain.Models.BusinessUnit", "BusinessUnit")
+                        .WithMany("UserAuthorizations")
+                        .HasForeignKey("BUId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("IM.TCM.Domain.Models.Company", "CompanyCode")
+                        .WithMany("UserAuthorizations")
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("IM.TCM.Domain.Models.ProcessType", "ProcessType")
+                        .WithMany("UserAuthorizations")
+                        .HasForeignKey("ProcessTypeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("IM.TCM.Domain.Models.ApplicationRole", "Role")
+                        .WithMany("UserAuthorizations")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("IM.TCM.Domain.Models.ApplicationUser", "User")
+                        .WithMany("Authorizations")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

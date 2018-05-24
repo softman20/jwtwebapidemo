@@ -24,6 +24,7 @@ namespace IM.TCM.Domain.Models
         public virtual ICollection<ApplicationUserRole> UserRoles { get; set; }
 
         public virtual ICollection<UserBusinessUnit> UserBusinessUnits { get; set; }
-                                           
+        public virtual ICollection<UserAuthorization> Authorizations { get; set; }
+
     }
 }

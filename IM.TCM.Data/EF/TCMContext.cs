@@ -24,7 +24,8 @@ namespace IM.TCM.Data.EF
             modelBuilder.ApplyConfiguration(new ApplicationUserRoleConfiguration());
             modelBuilder.ApplyConfiguration(new UserBusinessUnitConfiguration());
             modelBuilder.ApplyConfiguration(new CompanyProcessTypeConfiguration());
-
+            modelBuilder.ApplyConfiguration(new AccountGroupProcessTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new UserAuthorizationConfiguration());
         }
 
         public override int SaveChanges()
@@ -47,7 +48,7 @@ namespace IM.TCM.Data.EF
         }
         //  public DbSet<User> Users { get; set; }
         public DbSet<RefreshToken> RefreshToken { get; set; }
-        public DbSet<BusinessUnit> BusinessUnit { get; set; }
+       // public DbSet<BusinessUnit> BusinessUnit { get; set; }
 
         public DbSet<UserBusinessUnit> UserBusinessUnit { get; set; }
 
@@ -55,5 +56,9 @@ namespace IM.TCM.Data.EF
         public DbSet<Company> Company { get; set; }
 
         public DbSet<CompanyProcessType> CompanyProcessType { get;set;}
+        public DbSet<AccountGroup> AccountGroup { get; set; }
+        public DbSet<AccountGroupProcessType> AccountGroupProcessType { get; set; }
+
+        public DbSet<UserAuthorization> UserAuthorization { get; set; }
     }
 }

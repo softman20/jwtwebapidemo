@@ -15,6 +15,6 @@ namespace IM.TCM.Services.Interfaces
         string RefreshToken(string token);
         UserDto GetUser(string sgid);
         IEnumerable<UserDto> GetAllUsers();
-        IEnumerable<UserBusinessUnit> ListBusinessUnits(ApplicationUser user);
+        IEnumerable<int> ListBusinessUnits(ApplicationUser user);
     }
 }

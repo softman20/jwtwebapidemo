@@ -13,8 +13,10 @@ namespace IM.TCM.Domain.Dtos
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Email { get; set; }
-        public IEnumerable<string> Roles { get; set; }
-        public IEnumerable<BusinessUnit> BusinessUnits { get; set; }
-        public IEnumerable<string> BusinessUnitsId { get; set; }
+        public ICollection<string> Roles { get; set; }
+        public ICollection<BusinessUnit> BusinessUnits { get; set; }
+        public ICollection<string> BusinessUnitsId { get; set; }
+
+        public ICollection<UserAuthorizationDto> Authorizations { get; set; }
     }
 }
