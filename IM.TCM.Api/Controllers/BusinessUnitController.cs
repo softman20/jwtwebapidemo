@@ -12,12 +12,14 @@ namespace IM.TCM.Api.Controllers
 {
     [Produces("application/json")]
     [Route("api/BusinessUnit")]
-    public class BusinessUnitController : Controller
+    public class BusinessUnitController : BaseController
     {
         private readonly IBusinessUnitService _businessUnitService;
-        public BusinessUnitController(IBusinessUnitService businessUnitService)
+        private readonly IApplicationUserService _applicationUserService;
+        public BusinessUnitController(IBusinessUnitService businessUnitService, IApplicationUserService applicationUserService)
         {
             _businessUnitService = businessUnitService;
+            _applicationUserService = applicationUserService;
         }
 
         public IActionResult Get()
@@ -29,7 +31,7 @@ namespace IM.TCM.Api.Controllers
         [HttpGet("/api/BusinessUnitByIds")]
         public IActionResult GetByIds([FromQuery] int[] ids)
         {
-            var all = _businessUnitService.GetAll().Where(e=>ids.Contains(e.Id)).OrderBy(e => e.Name);
+            var all = _applicationUserService.GetUserBUWithRolesByIDs(UserId, ids);
             return Ok(all);
         }
     }

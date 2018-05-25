@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "829fa10dc8b15ade438448448bc8a66ddc504e2a"
+    "signature": "9bbd84db7657209ff342f7e8bed3dae791c3993c"
   },
   "compilationOptions": {
     "defines": [
@@ -2562,6 +2562,14 @@
           "ref/netstandard2.0/Microsoft.Win32.Registry.dll": {}
         }
       },
+      "morelinq/2.10.0": {
+        "runtime": {
+          "lib/netstandard2.0/MoreLinq.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/MoreLinq.dll": {}
+        }
+      },
       "Newtonsoft.Json/10.0.1": {
         "dependencies": {
           "Microsoft.CSharp": "4.4.0",
@@ -4285,7 +4293,8 @@
           "IM.TCM.Core": "1.0.0",
           "IM.TCM.Data": "1.0.0",
           "IM.TCM.Domain": "1.0.0",
-          "Microsoft.AspNetCore.Identity": "2.0.2"
+          "Microsoft.AspNetCore.Identity": "2.0.2",
+          "morelinq": "2.10.0"
         },
         "runtime": {
           "IM.TCM.Services.dll": {}
@@ -5730,6 +5739,13 @@
       "sha512": "sha512-dA36TlNVn/XfrZtmf0fiI/z1nd3Wfp2QVzTdj26pqgP9LFWq0i1hYEUAW50xUjGFYn1+/cP3KGuxT2Yn1OUNBQ==",
       "path": "microsoft.win32.registry/4.4.0",
       "hashPath": "microsoft.win32.registry.4.4.0.nupkg.sha512"
+    },
+    "morelinq/2.10.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OP4PtbVOg1pkUgUsCIHXKbT+BsiNJkKD00wRv7Td1d4cmt3QE/ZAvIPTR5FXIaLqlYMwRFGqRMCnevM5LOixbg==",
+      "path": "morelinq/2.10.0",
+      "hashPath": "morelinq.2.10.0.nupkg.sha512"
     },
     "Newtonsoft.Json/10.0.1": {
       "type": "package",

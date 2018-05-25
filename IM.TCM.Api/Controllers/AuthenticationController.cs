@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using IM.TCM.Services.Interfaces;
+using System.Dynamic;
 
 namespace IM.TCM.Api.Controllers
 {
@@ -55,18 +56,23 @@ namespace IM.TCM.Api.Controllers
 
         [HttpGet]
         [Route("login-callback", Name = "LoginCallback")]
-        public async Task<IActionResult> LoginCallback(string returnUrl = null)
+        public async Task<IActionResult> LoginCallback(string returnUrl = null,string switchSgId=null)
         {
+            string sgId=string.Empty;
             ExternalLoginInfo externalLoginInfo = await _signInManager.GetExternalLoginInfoAsync();
-            string sgId = externalLoginInfo.Principal.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            if (string.IsNullOrEmpty(sgId))
-            {
-                return Unauthorized();
+            if (string.IsNullOrEmpty(switchSgId))
+            {               
+                sgId = externalLoginInfo.Principal.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                if (string.IsNullOrEmpty(sgId))
+                {
+                    return Unauthorized();
+                }
+
+                await _signInManager.UpdateExternalAuthenticationTokensAsync(externalLoginInfo);
             }
-
-            await _signInManager.UpdateExternalAuthenticationTokensAsync(externalLoginInfo);
-
+            else sgId = switchSgId;
             ApplicationUser user = await _userManager.FindByLoginAsync(SaintGobainDefaults.DisplayName, sgId);
             //create roles
             if (!await _roleManager.RoleExistsAsync("Administrator"))
@@ -82,7 +88,7 @@ namespace IM.TCM.Api.Controllers
             if (!await _roleManager.RoleExistsAsync("Viewer"))
                 await _roleManager.CreateAsync(new ApplicationRole() { Name = "Viewer" });
 
-            if (user == null)
+            if (user == null && string.IsNullOrEmpty(switchSgId))
             {     
                 user = new ApplicationUser
                 {
@@ -104,7 +110,7 @@ namespace IM.TCM.Api.Controllers
             }
            
 
-            ClaimsIdentity externalClaimIdentity = externalLoginInfo.Principal.Identity as ClaimsIdentity;
+            ClaimsIdentity externalClaimIdentity = externalLoginInfo!=null && string.IsNullOrEmpty(switchSgId) ? externalLoginInfo.Principal.Identity as ClaimsIdentity:null;
             ClaimsIdentity claimIdentity = await GetClaimIdentity(user, externalClaimIdentity);
 
             //Create JWT token
@@ -120,7 +126,7 @@ namespace IM.TCM.Api.Controllers
             {
                 { "token", token }
             };
-
+           
             if (!string.IsNullOrEmpty(returnUrl))
             {
                 query.Add("returnurl", returnUrl);
@@ -133,7 +139,15 @@ namespace IM.TCM.Api.Controllers
         {
             ClaimsIdentity claimIdentity = initClaimIdentity != null ? initClaimIdentity.Clone() : new ClaimsIdentity();
 
-            claimIdentity.AddClaim(new Claim("ID",user.Id.ToString()));
+            //if no sso claims, create them from db
+            if (initClaimIdentity == null)
+            {
+                claimIdentity.AddClaim(new Claim(ClaimTypes.Email, user.Email));
+                claimIdentity.AddClaim(new Claim(ClaimTypes.Name, user.LastName));
+                claimIdentity.AddClaim(new Claim(ClaimTypes.GivenName, user.FirstName));
+                claimIdentity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.SgId));
+            }
+            claimIdentity.AddUpdateClaim("ID",user.Id.ToString());
 
             //Add roles
 
@@ -170,10 +184,23 @@ namespace IM.TCM.Api.Controllers
         [HttpGet("{token}")]
         [Route("refreshToken")]
         [AllowAnonymous]
-        public IActionResult RefreshToken(string token)
+        public async Task<IActionResult> RefreshToken(string token)
         {
-            string newToken = _applicationUserService.RefreshToken(token);
-            return Ok(newToken);
+            ClaimsPrincipal principal = _applicationUserService.ValidateJwt(token, false);
+            if (principal != null)
+            {
+                string userSgId = principal.FindFirstValue(ClaimTypes.NameIdentifier);
+                ClaimsIdentity currentClaimIdentity = principal.Identity as ClaimsIdentity;
+                ApplicationUser currentUser = await _userManager.FindByLoginAsync(SaintGobainDefaults.DisplayName, userSgId);
+              
+                ClaimsIdentity newClaimIdentity = await GetClaimIdentity(currentUser, currentClaimIdentity);
+                string refreshToken = _applicationUserService.CreateJwt(newClaimIdentity.Claims);
+                //dynamic newToken = new ExpandoObject();
+                //newToken.token = refreshToken;
+                return Ok(refreshToken);
+            }
+
+            return BadRequest();
         }
 
 

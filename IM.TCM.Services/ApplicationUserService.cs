@@ -19,6 +19,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using MoreLinq;
 
 namespace IM.TCM.Services
 {
@@ -32,12 +33,13 @@ namespace IM.TCM.Services
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IUserBusinessUnitRepository _userBusinessUnitRepository;
         private readonly IUserAuthorizationRepository _userAuthorizationRepository;
-        private readonly ICompanyRepository _companyRepository;
+        private readonly IBusinessUnitRepository _businessUnitRepository;
+        private readonly RoleManager<ApplicationRole> _roleManager;
 
-        public ApplicationUserService(IConfigurationRoot AppSettings, IHttpContextAccessor httpContextAccessor,
+        public ApplicationUserService(RoleManager<ApplicationRole> roleManager, IConfigurationRoot AppSettings, IHttpContextAccessor httpContextAccessor,
             IMapper mapper, UserManager<ApplicationUser> userManager, IApplicationUserRepository applicationUserRepository,
             IUserBusinessUnitRepository userBusinessUnitRepository, IUserAuthorizationRepository userAuthorizationRepository,
-            ICompanyRepository companyRepository, IOptions<LocalJwtBearerOptions> localJwtBearerOptions)
+            IBusinessUnitRepository businessUnitRepository, IOptions<LocalJwtBearerOptions> localJwtBearerOptions)
             : base(applicationUserRepository)
         {
             _localJwtBearerOptions = localJwtBearerOptions.Value;
@@ -48,25 +50,47 @@ namespace IM.TCM.Services
             _appSettings = AppSettings;
             _userBusinessUnitRepository = userBusinessUnitRepository;
             _userAuthorizationRepository = userAuthorizationRepository;
-            _companyRepository = companyRepository;
+            _businessUnitRepository = businessUnitRepository;
+            _roleManager = roleManager;
+        }
+
+        public IEnumerable<BusinessUnitDto> GetUserBUWithRolesByIDs(int userId, int[] BUids)
+        {
+            //var userBus = _userAuthorizationRepository.Find(where: e => e.UserId == userId && (BUids.Contains(e.BUId)||e.BUId==-1), include: e => e.Include(p => p.Role).Include(p => p.BusinessUnit));
+            var userBus = _mapper.Map<IEnumerable<BusinessUnit>,IEnumerable<BusinessUnitDto>>( _businessUnitRepository.Find(where: e => BUids.Contains(e.Id)));
+
+            foreach (var bu in userBus)
+            {
+                //fill roles
+              // var a =  _userAuthorizationRepository.Find(include: ua => ua.Include(p => p.Role), where: ua => ua.UserId == userId && (ua.BUId == bu.Id|| ua.BUId==-1)).Select(e => e.Role.Name);
+                bu.Roles = _userAuthorizationRepository.Find(include:ua=>ua.Include(p=>p.Role), where: ua => ua.UserId == userId && (ua.BUId == bu.Id || ua.BUId == -1)).Select(e => e.Role.Name);
+                //if user has role All bu, add it
+                //foreach (var role in _roleManager.Roles)
+                //{
+
+                //}
+            }
+            //return userBus.Select(e => 
+            //new BusinessUnitDto { Id = e.Id, Code = e.Code, Name = e.Name, Roles =  && ua.BUId== userBus.Where(b=>b.BUId==e.BUId).Select(r => r.Role.Name).Distinct() });
+            return userBus;
         }
 
         public IEnumerable<UserDto> GetAllUsers()
         {
-            var allUsers = this._applicationUserRepository.Find(include:e=>e.Include(p => p.Authorizations).ThenInclude(p => p.Role)
-                                        .Include(p => p.Authorizations).ThenInclude(p => p.BusinessUnit)
-                                        .Include(p => p.Authorizations).ThenInclude(p => p.CompanyCode)
-                                        .Include(p => p.Authorizations).ThenInclude(p => p.ProcessType));
+            var allUsers = this._applicationUserRepository.Find(include: e => e.Include(p => p.Authorizations).ThenInclude(p => p.Role)
+                                         .Include(p => p.Authorizations).ThenInclude(p => p.BusinessUnit)
+                                         .Include(p => p.Authorizations).ThenInclude(p => p.CompanyCode)
+                                         .Include(p => p.Authorizations).ThenInclude(p => p.ProcessType));
 
             return _mapper.Map<IEnumerable<ApplicationUser>, IEnumerable<UserDto>>(allUsers);
         }
 
         public UserDto GetUser(string sgId)
         {
-            ApplicationUser IdentityUser = this._applicationUserRepository.Find(where:e=>e.SgId==sgId, include: e => e.Include(p => p.Authorizations).ThenInclude(p => p.Role)
-                                         .Include(p => p.Authorizations).ThenInclude(p => p.BusinessUnit)
-                                         .Include(p => p.Authorizations).ThenInclude(p => p.CompanyCode)
-                                         .Include(p => p.Authorizations).ThenInclude(p => p.ProcessType)).FirstOrDefault();
+            ApplicationUser IdentityUser = this._applicationUserRepository.Find(where: e => e.SgId == sgId, include: e => e.Include(p => p.Authorizations).ThenInclude(p => p.Role)
+                                              .Include(p => p.Authorizations).ThenInclude(p => p.BusinessUnit)
+                                              .Include(p => p.Authorizations).ThenInclude(p => p.CompanyCode)
+                                              .Include(p => p.Authorizations).ThenInclude(p => p.ProcessType)).FirstOrDefault();
 
             return _mapper.Map<ApplicationUser, UserDto>(IdentityUser);
         }
@@ -79,7 +103,7 @@ namespace IM.TCM.Services
 
                 newUser.CreatedDate = DateTime.Now;
                 newUser.UserName = user.SgId.ToUpper();
-                newUser.CreatedBy =  _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                newUser.CreatedBy = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 newUser.IsActive = true;
                 newUser.Authorizations = null;
                 //Create user
@@ -102,7 +126,7 @@ namespace IM.TCM.Services
                     });
                 }
                 _userAuthorizationRepository.SaveChanges();
-              
+
 
                 return _mapper.Map<ApplicationUser, UserDto>(newUser);
             }
@@ -115,10 +139,10 @@ namespace IM.TCM.Services
 
         public IEnumerable<int> ListBusinessUnits(ApplicationUser user)
         {
-            IEnumerable<int> authorizedBUs= _userAuthorizationRepository.Find(where: ubu => ubu.UserId == user.Id).Select(e=>e.BUId);
+            IEnumerable<int> authorizedBUs = _userAuthorizationRepository.Find(where: ubu => ubu.UserId == user.Id).Select(e => e.BUId);
             if (authorizedBUs.Contains(-1))
-                authorizedBUs= _companyRepository.Find(where: e => e.Id != -1).Select(e => e.Id);
-             return authorizedBUs.Distinct();
+                authorizedBUs = _businessUnitRepository.Find(where: e => e.Id != -1).Select(e => e.Id);
+            return authorizedBUs.Distinct();
         }
 
         public async Task UpdateUserAsync(UserDto user)
@@ -158,6 +182,20 @@ namespace IM.TCM.Services
             {
                 await _userManager.DeleteAsync(user);
             }
+        }
+
+        public ClaimsPrincipal ValidateJwt(string currentToken, bool requireExpirationTime)
+        {
+            JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
+            if (handler.CanReadToken(currentToken))
+            {
+                TokenValidationParameters tokenValidationParameters = JWTBearerHelper.GetTokenValidationParameters(_appSettings.GetSection("JwtBearer"));
+                tokenValidationParameters.ValidateLifetime = requireExpirationTime;
+
+                return handler.ValidateToken(currentToken, tokenValidationParameters, out SecurityToken securityToken);
+            }
+
+            return null;
         }
 
         public string RefreshToken(string currentToken)

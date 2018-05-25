@@ -16,5 +16,7 @@ namespace IM.TCM.Services.Interfaces
         UserDto GetUser(string sgid);
         IEnumerable<UserDto> GetAllUsers();
         IEnumerable<int> ListBusinessUnits(ApplicationUser user);
+        ClaimsPrincipal ValidateJwt(string currentToken, bool requireExpirationTime);
+        IEnumerable<BusinessUnitDto> GetUserBUWithRolesByIDs(int userId, int[] BUids);
     }
 }

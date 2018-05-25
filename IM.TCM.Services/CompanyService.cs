@@ -1,5 +1,6 @@
 ﻿
 
+using IM.TCM.Data.Enums;
 using IM.TCM.Data.Repositories.Interfaces;
 using IM.TCM.Domain.Models;
 using IM.TCM.Services.Interfaces;
@@ -21,7 +22,7 @@ namespace IM.TCM.Services
 
         public IEnumerable<Company> GetCompaniesByBUAndProcessType(int userId, int businessUnitId, int processTypeId)
         {
-            IEnumerable<int> authorizedCompanies = _userAuthorizationRepository.Find(where: e => e.UserId == userId && (e.BUId == businessUnitId || e.BUId == -1)
+            IEnumerable<int> authorizedCompanies = _userAuthorizationRepository.Find(where: e => e.UserId == userId && e.RoleId==(int)Roles.Administrator && (e.BUId == businessUnitId)
              && (e.ProcessTypeId == processTypeId || e.ProcessTypeId == -1))
             .Select(e => e.CompanyId);
 

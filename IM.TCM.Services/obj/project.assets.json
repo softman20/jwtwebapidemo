@@ -1311,6 +1311,15 @@
           }
         }
       },
+      "morelinq/2.10.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/MoreLinq.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MoreLinq.dll": {}
+        }
+      },
       "NETStandard.Library/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -4184,6 +4193,23 @@
         "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "morelinq/2.10.0": {
+      "sha512": "OP4PtbVOg1pkUgUsCIHXKbT+BsiNJkKD00wRv7Td1d4cmt3QE/ZAvIPTR5FXIaLqlYMwRFGqRMCnevM5LOixbg==",
+      "type": "package",
+      "path": "morelinq/2.10.0",
+      "files": [
+        "lib/net35/MoreLinq.dll",
+        "lib/net35/MoreLinq.xml",
+        "lib/net40/MoreLinq.dll",
+        "lib/net40/MoreLinq.xml",
+        "lib/netstandard1.0/MoreLinq.dll",
+        "lib/netstandard1.0/MoreLinq.xml",
+        "lib/netstandard2.0/MoreLinq.dll",
+        "lib/netstandard2.0/MoreLinq.xml",
+        "morelinq.2.10.0.nupkg.sha512",
+        "morelinq.nuspec"
       ]
     },
     "NETStandard.Library/2.0.0": {
@@ -8341,7 +8367,8 @@
       "IM.TCM.Data >= 1.0.0",
       "IM.TCM.Domain >= 1.0.0",
       "Microsoft.AspNetCore.Identity >= 2.0.2",
-      "Microsoft.NETCore.App >= 2.0.0"
+      "Microsoft.NETCore.App >= 2.0.0",
+      "morelinq >= 2.10.0"
     ]
   },
   "packageFolders": {
@@ -8408,6 +8435,10 @@
             "target": "Package",
             "version": "[2.0.0, )",
             "autoReferenced": true
+          },
+          "morelinq": {
+            "target": "Package",
+            "version": "[2.10.0, )"
           }
         },
         "imports": [
