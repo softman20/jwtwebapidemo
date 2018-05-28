@@ -18,5 +18,6 @@ namespace IM.TCM.Domain.Models
         public virtual ICollection<AccountGroupProcessType> AccountGroupProcessType { get; set; }
 
         public virtual ICollection<UserAuthorization> UserAuthorizations { get; set; }
+        public virtual ICollection<ValidationRule> ValidationRules { get; set; }
     }
 }

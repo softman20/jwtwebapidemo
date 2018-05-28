@@ -26,6 +26,7 @@ namespace IM.TCM.Data.EF
             modelBuilder.ApplyConfiguration(new CompanyProcessTypeConfiguration());
             modelBuilder.ApplyConfiguration(new AccountGroupProcessTypeConfiguration());
             modelBuilder.ApplyConfiguration(new UserAuthorizationConfiguration());
+            modelBuilder.ApplyConfiguration(new ValidationRuleConfiguration());
         }
 
         public override int SaveChanges()
@@ -60,5 +61,7 @@ namespace IM.TCM.Data.EF
         public DbSet<AccountGroupProcessType> AccountGroupProcessType { get; set; }
 
         public DbSet<UserAuthorization> UserAuthorization { get; set; }
+        public DbSet<ValidationRule> ValidationRule { get; set; }
+        public DbSet<ValidationRuleUserRole> ValidationRuleUserRole { get; set; }
     }
 }

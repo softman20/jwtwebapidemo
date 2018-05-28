@@ -16,5 +16,6 @@ namespace IM.TCM.Domain.Models
         public virtual BusinessUnit BusinessUnit { get; set; }
 
         public virtual ICollection<AccountGroupProcessType> AccountGroupProcessType { get; set; }
+        public virtual ICollection<ValidationRule> ValidationRules { get; set; }
     }
 }

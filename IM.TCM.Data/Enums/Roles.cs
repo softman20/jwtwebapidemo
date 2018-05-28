@@ -7,9 +7,9 @@ namespace IM.TCM.Data.Enums
     public enum Roles
     {
         Administrator = 1,
-        Provider1 = 2,
-        Provider2 = 3,
-        Validator = 4,
+        Provider = 2,
+        Approver1 = 3,
+        Approver2 = 4,
         Accountant = 5,
         Viewer = 6
     }
