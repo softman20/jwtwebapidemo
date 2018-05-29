@@ -11,9 +11,10 @@ using System;
 namespace IM.TCM.Data.Migrations
 {
     [DbContext(typeof(TCMContext))]
-    partial class TCMContextModelSnapshot : ModelSnapshot
+    [Migration("20180529135503_addRequestType")]
+    partial class addRequestType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -325,7 +326,7 @@ namespace IM.TCM.Data.Migrations
 
                     b.Property<int>("ProcessTypeId");
 
-                    b.Property<int>("RequestTypeId");
+                    b.Property<int?>("RequestTypeId");
 
                     b.Property<string>("UpdatedBy");
 
@@ -572,10 +573,9 @@ namespace IM.TCM.Data.Migrations
                         .HasForeignKey("ProcessTypeId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("IM.TCM.Domain.Models.RequestType", "RequestType")
+                    b.HasOne("IM.TCM.Domain.Models.RequestType")
                         .WithMany("ValidationRules")
-                        .HasForeignKey("RequestTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("RequestTypeId");
                 });
 
             modelBuilder.Entity("IM.TCM.Domain.Models.ValidationRuleUserRole", b =>

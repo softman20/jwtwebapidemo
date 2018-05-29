@@ -40,6 +40,12 @@ namespace IM.TCM.Core.Utilities
             CreateMap<MasterDto, ProcessType>();
             CreateMap<ProcessType, MasterDto>();
 
+            CreateMap<ValidationRuleDto, ValidationRule>();
+            CreateMap<ValidationRule, ValidationRuleDto>();
+
+            CreateMap<ValidationRuleUserRoleDto, ValidationRuleUserRole>();
+            CreateMap<ValidationRuleUserRole, ValidationRuleUserRoleDto>();
+
         }
 
 

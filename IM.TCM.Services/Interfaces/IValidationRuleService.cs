@@ -10,5 +10,7 @@ namespace IM.TCM.Services.Interfaces
     public interface IValidationRuleService : IBaseService<ValidationRule>
     {
         IEnumerable<UserDto> GetValidationRulePotentielUsers(ValidationRuleDto validationRule);
+        void AddValidationRule(ValidationRuleDto validationRule);
+        IEnumerable<ValidationRuleUserRoleDto> GetValidationRuleUserRoles(ValidationRuleDto validationRule);
     }
 }

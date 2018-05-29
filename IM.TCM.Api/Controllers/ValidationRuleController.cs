@@ -29,7 +29,20 @@ namespace IM.TCM.Api.Controllers
             return Ok(all);
         }
 
-        
+        [HttpPost("GetValidationRuleUserRoles")]
+        public IActionResult GetValidationRuleUserRoles([FromBody] ValidationRuleDto validationRule)
+        {
+            var all = _validationRuleService.GetValidationRuleUserRoles(validationRule);
+            return Ok(all);
+        }
+
+        [HttpPost]
+        public IActionResult PostValidationRule([FromBody] ValidationRuleDto validationRule)
+        {
+            _validationRuleService.AddValidationRule(validationRule);
+            return Ok();
+        }
+
         [HttpGet("GetByBU/{businessUnitId}")]
         public IActionResult GetByBU(int businessUnitId)
         {

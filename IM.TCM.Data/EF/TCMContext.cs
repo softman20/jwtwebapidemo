@@ -54,6 +54,7 @@ namespace IM.TCM.Data.EF
         public DbSet<UserBusinessUnit> UserBusinessUnit { get; set; }
 
         public DbSet<ProcessType> ProcessType { get; set; }
+        public DbSet<RequestType> RequestType { get; set; }
         public DbSet<Company> Company { get; set; }
 
         public DbSet<CompanyProcessType> CompanyProcessType { get;set;}
