@@ -1,7 +1,9 @@
 ﻿
 
+using AutoMapper;
 using IM.TCM.Data.Enums;
 using IM.TCM.Data.Repositories.Interfaces;
+using IM.TCM.Domain.Dtos;
 using IM.TCM.Domain.Models;
 using IM.TCM.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -14,22 +16,27 @@ namespace IM.TCM.Services
     {
         private readonly ICompanyRepository _companyRepository;
         private readonly IUserAuthorizationRepository _userAuthorizationRepository;
-        public CompanyService(ICompanyRepository companyRepository, IUserAuthorizationRepository userAuthorizationRepository) : base(companyRepository)
+        private readonly IMapper _mapper;
+        public CompanyService(IMapper mapper, ICompanyRepository companyRepository, IUserAuthorizationRepository userAuthorizationRepository) : base(companyRepository)
         {
             _companyRepository = companyRepository;
             _userAuthorizationRepository = userAuthorizationRepository;
+            _mapper = mapper;
         }
 
-        public IEnumerable<Company> GetCompaniesByBUAndProcessType(int userId, int businessUnitId, int processTypeId)
+        public IEnumerable<MasterDto> GetCompaniesByBUAndProcessType(int userId, int businessUnitId, int processTypeId)
         {
-            IEnumerable<int> authorizedCompanies = _userAuthorizationRepository.Find(where: e => e.UserId == userId && e.RoleId==(int)Roles.Administrator && (e.BUId == businessUnitId)
+            IEnumerable<Company> lstCompanies;
+            IEnumerable<int> authorizedCompanies = _userAuthorizationRepository.Find(where: e => e.UserId == userId && e.RoleId==(int)Roles.Administrator && (e.BUId == businessUnitId || e.BUId==-1)
              && (e.ProcessTypeId == processTypeId || e.ProcessTypeId == -1))
             .Select(e => e.CompanyId);
 
             //if All(-1) authrorized get all companies of BU
             if (authorizedCompanies.Contains(-1))
-                return _companyRepository.Find(where: e => e.BusinessUnitId==businessUnitId && e.Id!=-1);
-            else return _companyRepository.Find(where: e => e.BusinessUnitId==businessUnitId && authorizedCompanies.Contains(e.Id));
+                lstCompanies= _companyRepository.Find(where: e => e.BusinessUnitId==businessUnitId && e.Id!=-1);
+            else lstCompanies= _companyRepository.Find(where: e => e.BusinessUnitId==businessUnitId && authorizedCompanies.Contains(e.Id));
+
+            return _mapper.Map<IEnumerable<Company>, IEnumerable<MasterDto>>(lstCompanies);
         }
 
         public IEnumerable<Company> GetCompaniesByBU(int businessUnitId)

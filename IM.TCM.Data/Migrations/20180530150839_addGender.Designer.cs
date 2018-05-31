@@ -11,9 +11,10 @@ using System;
 namespace IM.TCM.Data.Migrations
 {
     [DbContext(typeof(TCMContext))]
-    partial class TCMContextModelSnapshot : ModelSnapshot
+    [Migration("20180530150839_addGender")]
+    partial class addGender
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -110,8 +111,6 @@ namespace IM.TCM.Data.Migrations
 
                     b.Property<bool>("IsActive");
 
-                    b.Property<bool>("IsSuperAdmin");
-
                     b.Property<string>("LastName");
 
                     b.Property<bool>("LockoutEnabled");
@@ -144,8 +143,6 @@ namespace IM.TCM.Data.Migrations
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
-
-                    b.Property<bool>("ValidAvatar");
 
                     b.HasKey("Id");
 

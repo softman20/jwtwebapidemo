@@ -39,7 +39,14 @@ namespace IM.TCM.Api.Controllers
         [HttpPost]
         public IActionResult PostValidationRule([FromBody] ValidationRuleDto validationRule)
         {
-            _validationRuleService.AddValidationRule(validationRule);
+            int id = _validationRuleService.AddValidationRule(validationRule);
+            return Ok(id);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteValidationRule([FromRoute] int id)
+        {
+            _validationRuleService.Delete(id);
             return Ok();
         }
 

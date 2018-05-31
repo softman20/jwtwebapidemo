@@ -17,6 +17,9 @@ namespace IM.TCM.Domain.Models
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public bool IsActive { get; set; }
+        public string Gender { get; set; }
+        public bool ValidAvatar { get; set; }
+        public bool IsSuperAdmin { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public string UpdatedBy { get; set; }

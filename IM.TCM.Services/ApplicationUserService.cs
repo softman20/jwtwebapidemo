@@ -80,7 +80,7 @@ namespace IM.TCM.Services
             var allUsers = this._applicationUserRepository.Find(include: e => e.Include(p => p.Authorizations).ThenInclude(p => p.Role)
                                          .Include(p => p.Authorizations).ThenInclude(p => p.BusinessUnit)
                                          .Include(p => p.Authorizations).ThenInclude(p => p.CompanyCode)
-                                         .Include(p => p.Authorizations).ThenInclude(p => p.ProcessType));
+                                         .Include(p => p.Authorizations).ThenInclude(p => p.ProcessType)).OrderBy(e=>e.FirstName);
 
             return _mapper.Map<IEnumerable<ApplicationUser>, IEnumerable<UserDto>>(allUsers);
         }
@@ -106,8 +106,13 @@ namespace IM.TCM.Services
                 newUser.CreatedBy = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 newUser.IsActive = true;
                 newUser.Authorizations = null;
+
                 //Create user
                 await _userManager.CreateAsync(newUser);
+
+                if (newUser.IsSuperAdmin)
+                    await _userManager.AddToRoleAsync(newUser, "SuperAdmin");
+                else await _userManager.RemoveFromRoleAsync(newUser, "SuperAdmin");
 
                 UserLoginInfo userLoginInfo = new UserLoginInfo(SaintGobainDefaults.LoginProvider, newUser.SgId, SaintGobainDefaults.DisplayName);
                 //Create User Login
@@ -153,8 +158,14 @@ namespace IM.TCM.Services
                 theUser.FirstName = user.FirstName;
                 theUser.LastName = user.LastName;
                 theUser.Email = user.Email;
-
+                theUser.ValidAvatar = user.ValidAvatar;
+                theUser.IsSuperAdmin = user.IsSuperAdmin;
+                
                 IdentityResult result = await _userManager.UpdateAsync(theUser);
+
+                if (theUser.IsSuperAdmin)
+                    await _userManager.AddToRoleAsync(theUser, "SuperAdmin");
+                else await _userManager.RemoveFromRoleAsync(theUser, "SuperAdmin");
 
                 //remove authorizations
                 _userAuthorizationRepository.DeleteMulti(where: e => e.UserId == theUser.Id);

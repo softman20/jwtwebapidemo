@@ -11,9 +11,10 @@ using System;
 namespace IM.TCM.Data.Migrations
 {
     [DbContext(typeof(TCMContext))]
-    partial class TCMContextModelSnapshot : ModelSnapshot
+    [Migration("20180531144900_addIsSuperAdmin")]
+    partial class addIsSuperAdmin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

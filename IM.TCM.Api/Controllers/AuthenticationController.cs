@@ -75,18 +75,18 @@ namespace IM.TCM.Api.Controllers
             else sgId = switchSgId;
             ApplicationUser user = await _userManager.FindByLoginAsync(SaintGobainDefaults.DisplayName, sgId);
             //create roles
-            if (!await _roleManager.RoleExistsAsync("Administrator"))
-                await _roleManager.CreateAsync(new ApplicationRole() { Name = "Administrator" });
-            if (!await _roleManager.RoleExistsAsync("Provider 1"))
-                await _roleManager.CreateAsync(new ApplicationRole() { Name = "Provider 1" });
-            if (!await _roleManager.RoleExistsAsync("Provider 2"))
-                await _roleManager.CreateAsync(new ApplicationRole() { Name = "Provider 2" });
-            if (!await _roleManager.RoleExistsAsync("Validator"))
-                await _roleManager.CreateAsync(new ApplicationRole() { Name = "Validator" });
-            if (!await _roleManager.RoleExistsAsync("Accountant"))
-                await _roleManager.CreateAsync(new ApplicationRole() { Name = "Accountant" });
-            if (!await _roleManager.RoleExistsAsync("Viewer"))
-                await _roleManager.CreateAsync(new ApplicationRole() { Name = "Viewer" });
+            //if (!await _roleManager.RoleExistsAsync("Administrator"))
+            //    await _roleManager.CreateAsync(new ApplicationRole() { Name = "Administrator" });
+            //if (!await _roleManager.RoleExistsAsync("Provider 1"))
+            //    await _roleManager.CreateAsync(new ApplicationRole() { Name = "Provider 1" });
+            //if (!await _roleManager.RoleExistsAsync("Provider 2"))
+            //    await _roleManager.CreateAsync(new ApplicationRole() { Name = "Provider 2" });
+            //if (!await _roleManager.RoleExistsAsync("Validator"))
+            //    await _roleManager.CreateAsync(new ApplicationRole() { Name = "Validator" });
+            //if (!await _roleManager.RoleExistsAsync("Accountant"))
+            //    await _roleManager.CreateAsync(new ApplicationRole() { Name = "Accountant" });
+            //if (!await _roleManager.RoleExistsAsync("Viewer"))
+            //    await _roleManager.CreateAsync(new ApplicationRole() { Name = "Viewer" });
 
             if (user == null && string.IsNullOrEmpty(switchSgId))
             {     
@@ -168,7 +168,9 @@ namespace IM.TCM.Api.Controllers
 
             claimIdentity.AddUpdateClaim(ClaimTypes.NameIdentifier, user.SgId);
             claimIdentity.AddUpdateClaim("sgid", user.UserName);
-
+            claimIdentity.AddUpdateClaim("gender", user.Gender);
+            claimIdentity.AddUpdateClaim("validAvatar", user.ValidAvatar.ToString());
+            claimIdentity.AddUpdateClaim("isSuperAdmin", user.IsSuperAdmin.ToString());
             return claimIdentity;
         }
 

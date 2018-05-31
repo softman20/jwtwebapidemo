@@ -11,6 +11,9 @@ namespace IM.TCM.Data.Enums
         Approver1 = 3,
         Approver2 = 4,
         Accountant = 5,
-        Viewer = 6
+        SuperAdmin = 6
+
     }
+
+  
 }

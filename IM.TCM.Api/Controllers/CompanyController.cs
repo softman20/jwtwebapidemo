@@ -25,7 +25,7 @@ namespace IM.TCM.Api.Controllers
         [HttpGet("{businessUnitId}/{processTypeId}")]
         public IActionResult Get(int businessUnitId, int processTypeId)
         {
-            var all = _companyService.GetCompaniesByBUAndProcessType(UserId, businessUnitId,processTypeId).Select(e=> new MasterDto { Id = e.Id, Name = e.Name });
+            var all = _companyService.GetCompaniesByBUAndProcessType(UserId, businessUnitId,processTypeId);
             return Ok(all);
         }
 

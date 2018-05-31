@@ -32,13 +32,21 @@ namespace IM.TCM.Services
             return _mapper.Map<IEnumerable<ApplicationUser>, IEnumerable<UserDto>>(
                 _userAuthorizationRepository.Find(
                     where: e => (e.BUId == validationRule.BusinessUnit.Id || e.BUId == -1) && (e.CompanyId == validationRule.CompanyCode.Id || e.CompanyId == -1) && (e.ProcessTypeId == validationRule.ProcessType.Id || e.ProcessTypeId == -1),
-                    include: e => e.Include(p => p.User)).Select(e => e.User)).DistinctBy(e => e.Id);
+                    include: e => e.Include(p => p.User)).Select(e => e.User)).DistinctBy(e => e.Id).OrderBy(e=>e.FirstName);
         }
 
-        public void AddValidationRule(ValidationRuleDto validationRule)
+        public void DeleteValidationRule(int id)
         {
+            ValidationRule validationRule = _validationRuleRepository.GetById(id);
+            if (validationRule != null)
+                _validationRuleRepository.Delete(validationRule);
+        }
+        public int AddValidationRule(ValidationRuleDto validationRule)
+        {
+            //delete validation rule if exist
+            if (validationRule.Id > 0)
+                this.Delete(validationRule.Id);
             //add validation rule
-
             ValidationRule newValidationRule = new ValidationRule
             {
                 BUId = validationRule.BusinessUnit.Id,
@@ -62,6 +70,7 @@ namespace IM.TCM.Services
                 });
             }
             _validationRuleRepository.SaveChanges();
+            return newValidationRule.Id;
         }
 
         public IEnumerable<ValidationRuleUserRoleDto> GetValidationRuleUserRoles(ValidationRuleDto validationRule)
@@ -69,8 +78,8 @@ namespace IM.TCM.Services
             IEnumerable<ValidationRuleUserRoleDto> result = null;
 
             ValidationRule theValidationRule = _validationRuleRepository.Find(
-                where: e => (e.BUId == validationRule.BusinessUnit.Id) && (e.CompanyId == validationRule.CompanyCode.Id) && (e.ProcessTypeId == validationRule.ProcessType.Id)
-                && e.RequestTypeId == validationRule.RequestType.Id).FirstOrDefault();
+                where: e => (e.BUId == validationRule.BusinessUnit.Id) && (e.CompanyId == validationRule.CompanyCode.Id) && (e.AccountGroupId==validationRule.AccountGroup.Id)
+                && (e.ProcessTypeId == validationRule.ProcessType.Id) && e.RequestTypeId == validationRule.RequestType.Id).FirstOrDefault();
 
             if (theValidationRule != null)
                 result = _mapper.Map<IEnumerable<ValidationRuleUserRole>, IEnumerable<ValidationRuleUserRoleDto>>(_validationRuleUserRoleRepository

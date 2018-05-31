@@ -13,6 +13,9 @@ namespace IM.TCM.Domain.Dtos
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Email { get; set; }
+        public string Gender { get; set; }
+        public bool ValidAvatar { get; set; }
+        public bool IsSuperAdmin { get; set; }
         public ICollection<string> Roles { get; set; }
         public ICollection<BusinessUnit> BusinessUnits { get; set; }
         public ICollection<string> BusinessUnitsId { get; set; }
