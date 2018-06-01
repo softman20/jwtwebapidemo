@@ -11,9 +11,10 @@ using System;
 namespace IM.TCM.Data.Migrations
 {
     [DbContext(typeof(TCMContext))]
-    partial class TCMContextModelSnapshot : ModelSnapshot
+    [Migration("20180601154202_addTemplateControl")]
+    partial class addTemplateControl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -274,42 +275,6 @@ namespace IM.TCM.Data.Migrations
                     b.ToTable("RequestType");
                 });
 
-            modelBuilder.Entity("IM.TCM.Domain.Models.Template", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AccountGroupId");
-
-                    b.Property<int>("BUId");
-
-                    b.Property<int>("CompanyId");
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<bool>("IsActive");
-
-                    b.Property<int>("ProcessTypeId");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AccountGroupId");
-
-                    b.HasIndex("BUId");
-
-                    b.HasIndex("CompanyId");
-
-                    b.HasIndex("ProcessTypeId");
-
-                    b.ToTable("Template");
-                });
-
             modelBuilder.Entity("IM.TCM.Domain.Models.TemplateControl", b =>
                 {
                     b.Property<int>("Id")
@@ -334,40 +299,6 @@ namespace IM.TCM.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TemplateControl");
-                });
-
-            modelBuilder.Entity("IM.TCM.Domain.Models.TemplateControlConfig", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("AlterableApprover1");
-
-                    b.Property<bool>("AlterableApprover2");
-
-                    b.Property<bool>("AlterableApprover3");
-
-                    b.Property<bool>("AlterableProvider");
-
-                    b.Property<bool>("Capital");
-
-                    b.Property<string>("DefaultValue");
-
-                    b.Property<bool>("Display");
-
-                    b.Property<bool>("Mandatory");
-
-                    b.Property<int>("TemplateControlId");
-
-                    b.Property<int>("TemplateId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TemplateControlId");
-
-                    b.HasIndex("TemplateId");
-
-                    b.ToTable("TemplateControlConfig");
                 });
 
             modelBuilder.Entity("IM.TCM.Domain.Models.UserAuthorization", b =>
@@ -608,42 +539,6 @@ namespace IM.TCM.Data.Migrations
                     b.HasOne("IM.TCM.Domain.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("IM.TCM.Domain.Models.Template", b =>
-                {
-                    b.HasOne("IM.TCM.Domain.Models.AccountGroup", "AccountGroup")
-                        .WithMany("Templates")
-                        .HasForeignKey("AccountGroupId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("IM.TCM.Domain.Models.BusinessUnit", "BusinessUnit")
-                        .WithMany("Templates")
-                        .HasForeignKey("BUId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("IM.TCM.Domain.Models.Company", "CompanyCode")
-                        .WithMany("Templates")
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("IM.TCM.Domain.Models.ProcessType", "ProcessType")
-                        .WithMany("Templates")
-                        .HasForeignKey("ProcessTypeId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("IM.TCM.Domain.Models.TemplateControlConfig", b =>
-                {
-                    b.HasOne("IM.TCM.Domain.Models.TemplateControl", "TemplateControl")
-                        .WithMany()
-                        .HasForeignKey("TemplateControlId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("IM.TCM.Domain.Models.Template", "Template")
-                        .WithMany()
-                        .HasForeignKey("TemplateId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

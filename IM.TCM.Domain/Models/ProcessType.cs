@@ -19,5 +19,6 @@ namespace IM.TCM.Domain.Models
 
         public virtual ICollection<UserAuthorization> UserAuthorizations { get; set; }
         public virtual ICollection<ValidationRule> ValidationRules { get; set; }
+        public virtual ICollection<Template> Templates { get; set; }
     }
 }

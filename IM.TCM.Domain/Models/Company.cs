@@ -19,5 +19,7 @@ namespace IM.TCM.Domain.Models
 
         [ForeignKey("BusinessUnitId")]
         public virtual BusinessUnit BusinessUnit { get; set; }
+
+        public virtual ICollection<Template> Templates { get; set; }
     }
 }
