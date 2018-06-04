@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IM.TCM.Domain.Dtos;
 using IM.TCM.Domain.Models;
 using IM.TCM.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
@@ -24,6 +25,13 @@ namespace IM.TCM.Api.Controllers
         {
             var all = _templateControlService.GetAll();
             return Ok(all);
+        }
+
+        [HttpPost]
+        public IActionResult GetTemplateControls([FromBody] SelectionCriteriaDto selectionCriteria)
+        {
+            var result = _templateControlService.GetTemplateControls(selectionCriteria);
+            return Ok(result);
         }
     }
 }

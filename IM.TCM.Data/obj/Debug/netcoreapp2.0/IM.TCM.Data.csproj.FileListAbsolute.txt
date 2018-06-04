@@ -1,0 +1,14 @@
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Data\bin\Debug\netcoreapp2.0\IM.TCM.Data.deps.json
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Data\bin\Debug\netcoreapp2.0\IM.TCM.Data.dll
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Data\bin\Debug\netcoreapp2.0\IM.TCM.Data.pdb
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Data\bin\Debug\netcoreapp2.0\IM.TCM.Domain.dll
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Data\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Data\bin\Debug\netcoreapp2.0\IM.TCM.Domain.pdb
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Data\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Data\obj\Debug\netcoreapp2.0\IM.TCM.Data.csprojResolveAssemblyReference.cache
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Data\obj\Debug\netcoreapp2.0\IM.TCM.Data.csproj.CoreCompileInputs.cache
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Data\obj\Debug\netcoreapp2.0\IM.TCM.Data.AssemblyInfoInputs.cache
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Data\obj\Debug\netcoreapp2.0\IM.TCM.Data.AssemblyInfo.cs
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Data\obj\Debug\netcoreapp2.0\IM.TCM.Data.csproj.CopyComplete
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Data\obj\Debug\netcoreapp2.0\IM.TCM.Data.dll
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Data\obj\Debug\netcoreapp2.0\IM.TCM.Data.pdb

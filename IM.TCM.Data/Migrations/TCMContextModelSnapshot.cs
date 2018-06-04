@@ -315,6 +315,8 @@ namespace IM.TCM.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("BUId");
+
                     b.Property<string>("CreatedBy");
 
                     b.Property<DateTime>("CreatedDate");
@@ -322,6 +324,8 @@ namespace IM.TCM.Data.Migrations
                     b.Property<bool>("IsActive");
 
                     b.Property<string>("Label");
+
+                    b.Property<int>("ProcessTypeId");
 
                     b.Property<string>("SapField");
 
@@ -332,6 +336,10 @@ namespace IM.TCM.Data.Migrations
                     b.Property<DateTime?>("UpdatedDate");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BUId");
+
+                    b.HasIndex("ProcessTypeId");
 
                     b.ToTable("TemplateControl");
                 });
@@ -632,6 +640,19 @@ namespace IM.TCM.Data.Migrations
                         .WithMany("Templates")
                         .HasForeignKey("ProcessTypeId")
                         .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("IM.TCM.Domain.Models.TemplateControl", b =>
+                {
+                    b.HasOne("IM.TCM.Domain.Models.BusinessUnit", "BusinessUnit")
+                        .WithMany()
+                        .HasForeignKey("BUId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("IM.TCM.Domain.Models.ProcessType", "ProcessType")
+                        .WithMany()
+                        .HasForeignKey("ProcessTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("IM.TCM.Domain.Models.TemplateControlConfig", b =>

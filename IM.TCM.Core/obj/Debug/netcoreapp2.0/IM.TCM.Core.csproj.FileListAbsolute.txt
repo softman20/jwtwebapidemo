@@ -1,0 +1,16 @@
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Core\bin\Debug\netcoreapp2.0\IM.TCM.Core.deps.json
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Core\bin\Debug\netcoreapp2.0\IM.TCM.Core.dll
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Core\bin\Debug\netcoreapp2.0\IM.TCM.Core.pdb
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Core\bin\Debug\netcoreapp2.0\IM.TCM.Data.dll
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Core\bin\Debug\netcoreapp2.0\IM.TCM.Domain.dll
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Core\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Authentication.OAuth.dll
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Core\bin\Debug\netcoreapp2.0\IM.TCM.Data.pdb
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Core\bin\Debug\netcoreapp2.0\IM.TCM.Domain.pdb
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Core\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Authentication.OAuth.xml
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Core\obj\Debug\netcoreapp2.0\IM.TCM.Core.csprojResolveAssemblyReference.cache
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Core\obj\Debug\netcoreapp2.0\IM.TCM.Core.csproj.CoreCompileInputs.cache
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Core\obj\Debug\netcoreapp2.0\IM.TCM.Core.AssemblyInfoInputs.cache
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Core\obj\Debug\netcoreapp2.0\IM.TCM.Core.AssemblyInfo.cs
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Core\obj\Debug\netcoreapp2.0\IM.TCM.Core.csproj.CopyComplete
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Core\obj\Debug\netcoreapp2.0\IM.TCM.Core.dll
+C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Core\obj\Debug\netcoreapp2.0\IM.TCM.Core.pdb

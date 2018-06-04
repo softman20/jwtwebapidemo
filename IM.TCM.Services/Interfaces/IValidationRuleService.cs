@@ -11,6 +11,7 @@ namespace IM.TCM.Services.Interfaces
     {
         IEnumerable<UserDto> GetValidationRulePotentielUsers(ValidationRuleDto validationRule);
         int AddValidationRule(ValidationRuleDto validationRule);
+        int AddValidationRuleFromCopy(ValidationRuleDto validationRule, ValidationRuleDto validationRuleToCompyFrom);
         IEnumerable<ValidationRuleUserRoleDto> GetValidationRuleUserRoles(ValidationRuleDto validationRule);
     }
 }

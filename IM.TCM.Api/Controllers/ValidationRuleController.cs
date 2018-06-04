@@ -43,6 +43,13 @@ namespace IM.TCM.Api.Controllers
             return Ok(id);
         }
 
+        [HttpPost("AddFromCopy")]
+        public IActionResult AddValidationRuleFromCopy([FromBody] ValidationRuleCopyFromDto validationRules)
+        {
+            int id = _validationRuleService.AddValidationRuleFromCopy(validationRules.ValidationRule, validationRules.ValidationRuleCopyFrom);
+            return Ok(id);
+        }
+
         [HttpDelete("{id}")]
         public IActionResult DeleteValidationRule([FromRoute] int id)
         {

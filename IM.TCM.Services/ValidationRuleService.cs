@@ -72,6 +72,45 @@ namespace IM.TCM.Services
             _validationRuleRepository.SaveChanges();
             return newValidationRule.Id;
         }
+       public int AddValidationRuleFromCopy(ValidationRuleDto validationRule, ValidationRuleDto validationRuleToCompyFrom)
+        {
+            ValidationRule theValidationRule = _validationRuleRepository.Find(
+                where: e => (e.BUId == validationRuleToCompyFrom.BusinessUnit.Id) && (e.CompanyId == validationRuleToCompyFrom.CompanyCode.Id) && (e.AccountGroupId == validationRuleToCompyFrom.AccountGroup.Id)
+                && (e.ProcessTypeId == validationRuleToCompyFrom.ProcessType.Id) && e.RequestTypeId == validationRuleToCompyFrom.RequestType.Id).FirstOrDefault();
+
+            if (theValidationRule != null)
+            {
+                //add validation rule
+                ValidationRule newValidationRule = new ValidationRule
+                {
+                    BUId = validationRule.BusinessUnit.Id,
+                    AccountGroupId = validationRule.AccountGroup.Id,
+                    CompanyId = validationRule.CompanyCode.Id,
+                    ProcessTypeId = validationRule.ProcessType.Id,
+                    RequestTypeId = validationRule.RequestType.Id
+                };
+
+                _validationRuleRepository.Add(newValidationRule);
+                _validationRuleRepository.SaveChanges();
+
+                IEnumerable<ValidationRuleUserRole> validationRuleUserRoles = _validationRuleUserRoleRepository.Find(e => e.ValidationRuleId == theValidationRule.Id);
+                //add validation rule user roles
+                foreach (ValidationRuleUserRole validationRuleUserRole in validationRuleUserRoles)
+                {
+                    _validationRuleUserRoleRepository.Add(new ValidationRuleUserRole
+                    {
+                        RoleId = validationRuleUserRole.RoleId,
+                        UserId = validationRuleUserRole.UserId,
+                        ValidationRuleId = newValidationRule.Id
+                    });
+                }
+                _validationRuleRepository.SaveChanges();
+
+                return newValidationRule.Id;
+            }
+            else return 0;
+          
+        }
 
         public IEnumerable<ValidationRuleUserRoleDto> GetValidationRuleUserRoles(ValidationRuleDto validationRule)
         {
