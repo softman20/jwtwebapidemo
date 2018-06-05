@@ -46,6 +46,12 @@ namespace IM.TCM.Core.Utilities
             CreateMap<ValidationRuleUserRoleDto, ValidationRuleUserRole>();
             CreateMap<ValidationRuleUserRole, ValidationRuleUserRoleDto>();
 
+            CreateMap<TemplateControlDto, TemplateControl>();
+            CreateMap<TemplateControl, TemplateControlDto>();
+
+            CreateMap<TemplateControlConfigDto, TemplateControlConfig>()
+                .ForMember(e=>e.Id,m=>m.UseValue(0));
+            CreateMap<TemplateControlConfig, TemplateControlConfigDto>();
         }
 
 

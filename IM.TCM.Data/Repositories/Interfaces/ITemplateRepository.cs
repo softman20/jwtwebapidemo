@@ -7,6 +7,5 @@ namespace IM.TCM.Data.Repositories.Interfaces
 {
     public interface ITemplateRepository : IBaseRepository<Template>
     {
-       
     }
 }

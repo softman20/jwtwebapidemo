@@ -15,22 +15,36 @@ namespace IM.TCM.Api.Controllers
     [Route("api/TemplateManagement")]
     public class TemplateManagementController : Controller
     {
-        private readonly ITemplateControlService _templateControlService;
-        public TemplateManagementController(ITemplateControlService templateControlService)
+        private readonly ITemplateManagementService _templateManagementService;
+        public TemplateManagementController(ITemplateManagementService templateManagementService)
         {
-            _templateControlService = templateControlService;
+            _templateManagementService = templateManagementService;
         }
 
         public IActionResult Get()
         {
-            var all = _templateControlService.GetAll();
+            var all = _templateManagementService.GetAll();
             return Ok(all);
         }
 
         [HttpPost]
         public IActionResult GetTemplateControls([FromBody] SelectionCriteriaDto selectionCriteria)
         {
-            var result = _templateControlService.GetTemplateControls(selectionCriteria);
+            var result = _templateManagementService.GetTemplateControls(selectionCriteria);
+            return Ok(result);
+        }
+
+        [HttpPost("AddNewTemplate")]
+        public IActionResult AddNewTemplate([FromBody] SelectionCriteriaDto selectionCriteria)
+        {
+            var result = _templateManagementService.AddNewTemplate(selectionCriteria);
+            return Ok(result);
+        }
+
+        [HttpPut]
+        public IActionResult UpdateTemplate([FromBody] IEnumerable<TemplateControlDto> templateControls)
+        {
+            var result = _templateManagementService.UpdateTemplate(templateControls);
             return Ok(result);
         }
     }
