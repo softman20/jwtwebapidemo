@@ -1,1 +1,13 @@
 /.vs
+/IM.TCM.Api/bin
+/IM.TCM.Api/obj
+/IM.TCM.Core/obj
+/IM.TCM.Core/bin
+/IM.TCM.Data/obj
+/IM.TCM.Data/bin
+/IM.TCM.Domain/obj
+/IM.TCM.Domain/bin
+/IM.TCM.Infrastructure/bin
+/IM.TCM.Infrastructure/obj
+/IM.TCM.Services/bin
+/IM.TCM.Services/obj

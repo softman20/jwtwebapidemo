@@ -11,9 +11,10 @@ using System;
 namespace IM.TCM.Data.Migrations
 {
     [DbContext(typeof(TCMContext))]
-    partial class TCMContextModelSnapshot : ModelSnapshot
+    [Migration("20180606122300_AddOrganizationAuthorization")]
+    partial class AddOrganizationAuthorization
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -323,8 +324,6 @@ namespace IM.TCM.Data.Migrations
 
                     b.Property<bool>("IsActive");
 
-                    b.Property<int>("OrganizationId");
-
                     b.Property<int>("ProcessTypeId");
 
                     b.Property<string>("UpdatedBy");
@@ -338,8 +337,6 @@ namespace IM.TCM.Data.Migrations
                     b.HasIndex("BUId");
 
                     b.HasIndex("CompanyId");
-
-                    b.HasIndex("OrganizationId");
 
                     b.HasIndex("ProcessTypeId");
 
@@ -473,8 +470,6 @@ namespace IM.TCM.Data.Migrations
 
                     b.Property<bool>("IsActive");
 
-                    b.Property<int>("OrganizationId");
-
                     b.Property<int>("ProcessTypeId");
 
                     b.Property<int>("RequestTypeId");
@@ -490,8 +485,6 @@ namespace IM.TCM.Data.Migrations
                     b.HasIndex("BUId");
 
                     b.HasIndex("CompanyId");
-
-                    b.HasIndex("OrganizationId");
 
                     b.HasIndex("ProcessTypeId");
 
@@ -693,11 +686,6 @@ namespace IM.TCM.Data.Migrations
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("IM.TCM.Domain.Models.SalesOrganization", "Organization")
-                        .WithMany("Templates")
-                        .HasForeignKey("OrganizationId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("IM.TCM.Domain.Models.ProcessType", "ProcessType")
                         .WithMany("Templates")
                         .HasForeignKey("ProcessTypeId")
@@ -791,11 +779,6 @@ namespace IM.TCM.Data.Migrations
                     b.HasOne("IM.TCM.Domain.Models.Company", "CompanyCode")
                         .WithMany("ValidationRules")
                         .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("IM.TCM.Domain.Models.SalesOrganization", "Organization")
-                        .WithMany("ValidationRules")
-                        .HasForeignKey("OrganizationId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("IM.TCM.Domain.Models.ProcessType", "ProcessType")

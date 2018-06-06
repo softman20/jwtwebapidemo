@@ -68,5 +68,6 @@ namespace IM.TCM.Data.EF
         public DbSet<TemplateControl> TemplateControl { get; set; }
         public DbSet<Template> Template { get; set; }
         public DbSet<TemplateControlConfig> TemplateControlConfig { get; set; }
+        public DbSet<SalesOrganization> SalesOrganization { get; set; }
     }
 }

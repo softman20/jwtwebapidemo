@@ -9,6 +9,7 @@ namespace IM.TCM.Domain.Models
         public int CompanyId { get; set; }
         public int ProcessTypeId { get; set; }
         public int RequestTypeId { get; set; }
+        public int OrganizationId { get; set; }
 
         public virtual BusinessUnit BusinessUnit { get; set; }
 
@@ -19,5 +20,7 @@ namespace IM.TCM.Domain.Models
         public virtual ProcessType ProcessType { get; set; }
 
         public virtual RequestType RequestType { get; set; }
+
+        public virtual SalesOrganization Organization { get; set; }
     }
 }

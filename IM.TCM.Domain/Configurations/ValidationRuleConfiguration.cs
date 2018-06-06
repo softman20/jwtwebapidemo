@@ -14,6 +14,7 @@ namespace IM.TCM.Domain.Configurations
             builder.HasOne(pt => pt.CompanyCode).WithMany(t => t.ValidationRules).HasForeignKey(pt => pt.CompanyId).OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(pt => pt.AccountGroup).WithMany(t => t.ValidationRules).HasForeignKey(pt => pt.AccountGroupId).OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(pt => pt.ProcessType).WithMany(t => t.ValidationRules).HasForeignKey(pt => pt.ProcessTypeId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(pt => pt.Organization).WithMany(t => t.ValidationRules).HasForeignKey(pt => pt.OrganizationId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

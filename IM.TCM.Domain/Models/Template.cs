@@ -11,7 +11,7 @@ namespace IM.TCM.Domain.Models
         public int AccountGroupId { get; set; }
         public int CompanyId { get; set; }
         public int ProcessTypeId { get; set; }
-       
+        public int OrganizationId { get; set; }
 
         public virtual BusinessUnit BusinessUnit { get; set; }
 
@@ -20,6 +20,8 @@ namespace IM.TCM.Domain.Models
         public virtual Company CompanyCode { get; set; }
 
         public virtual ProcessType ProcessType { get; set; }
-        
+
+        public virtual SalesOrganization Organization { get; set; }
+
     }
 }

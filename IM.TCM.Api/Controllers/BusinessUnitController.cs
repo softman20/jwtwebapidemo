@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using IM.TCM.Domain.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using IM.TCM.Services.Interfaces;
 

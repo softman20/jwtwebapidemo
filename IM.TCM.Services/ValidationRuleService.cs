@@ -31,7 +31,8 @@ namespace IM.TCM.Services
         {
             return _mapper.Map<IEnumerable<ApplicationUser>, IEnumerable<UserDto>>(
                 _userAuthorizationRepository.Find(
-                    where: e => (e.BUId == validationRule.BusinessUnit.Id || e.BUId == -1) && (e.CompanyId == validationRule.CompanyCode.Id || e.CompanyId == -1) && (e.ProcessTypeId == validationRule.ProcessType.Id || e.ProcessTypeId == -1),
+                    where: e => (e.BUId == validationRule.BusinessUnit.Id || e.BUId == -1) && (e.CompanyId == validationRule.CompanyCode.Id || e.CompanyId == -1) && (e.ProcessTypeId == validationRule.ProcessType.Id || e.ProcessTypeId == -1)
+                     && (e.OrganizationId == validationRule.Organization.Id || e.OrganizationId == -1),
                     include: e => e.Include(p => p.User)).Select(e => e.User)).DistinctBy(e => e.Id).OrderBy(e=>e.FirstName);
         }
 
@@ -53,7 +54,8 @@ namespace IM.TCM.Services
                 AccountGroupId = validationRule.AccountGroup.Id,
                 CompanyId = validationRule.CompanyCode.Id,
                 ProcessTypeId = validationRule.ProcessType.Id,
-                RequestTypeId = validationRule.RequestType.Id
+                RequestTypeId = validationRule.RequestType.Id,
+                OrganizationId = validationRule.Organization.Id
             };
 
             _validationRuleRepository.Add(newValidationRule);
@@ -75,8 +77,8 @@ namespace IM.TCM.Services
        public int AddValidationRuleFromCopy(ValidationRuleDto validationRule, ValidationRuleDto validationRuleToCompyFrom)
         {
             ValidationRule theValidationRule = _validationRuleRepository.Find(
-                where: e => (e.BUId == validationRuleToCompyFrom.BusinessUnit.Id) && (e.CompanyId == validationRuleToCompyFrom.CompanyCode.Id) && (e.AccountGroupId == validationRuleToCompyFrom.AccountGroup.Id)
-                && (e.ProcessTypeId == validationRuleToCompyFrom.ProcessType.Id) && e.RequestTypeId == validationRuleToCompyFrom.RequestType.Id).FirstOrDefault();
+                where: e => (e.BUId == validationRuleToCompyFrom.BusinessUnit.Id) && (e.CompanyId == validationRuleToCompyFrom.CompanyCode.Id) && (e.OrganizationId == validationRuleToCompyFrom.Organization.Id) 
+                && (e.AccountGroupId == validationRuleToCompyFrom.AccountGroup.Id) && (e.ProcessTypeId == validationRuleToCompyFrom.ProcessType.Id) && e.RequestTypeId == validationRuleToCompyFrom.RequestType.Id).FirstOrDefault();
 
             if (theValidationRule != null)
             {
@@ -87,7 +89,8 @@ namespace IM.TCM.Services
                     AccountGroupId = validationRule.AccountGroup.Id,
                     CompanyId = validationRule.CompanyCode.Id,
                     ProcessTypeId = validationRule.ProcessType.Id,
-                    RequestTypeId = validationRule.RequestType.Id
+                    RequestTypeId = validationRule.RequestType.Id,
+                    OrganizationId = validationRule.Organization.Id
                 };
 
                 _validationRuleRepository.Add(newValidationRule);
@@ -117,8 +120,8 @@ namespace IM.TCM.Services
             IEnumerable<ValidationRuleUserRoleDto> result = null;
 
             ValidationRule theValidationRule = _validationRuleRepository.Find(
-                where: e => (e.BUId == validationRule.BusinessUnit.Id) && (e.CompanyId == validationRule.CompanyCode.Id) && (e.AccountGroupId==validationRule.AccountGroup.Id)
-                && (e.ProcessTypeId == validationRule.ProcessType.Id) && e.RequestTypeId == validationRule.RequestType.Id).FirstOrDefault();
+                where: e => (e.BUId == validationRule.BusinessUnit.Id) && (e.CompanyId == validationRule.CompanyCode.Id) && (e.OrganizationId == validationRule.Organization.Id) 
+                && (e.AccountGroupId==validationRule.AccountGroup.Id) && (e.ProcessTypeId == validationRule.ProcessType.Id) && e.RequestTypeId == validationRule.RequestType.Id).FirstOrDefault();
 
             if (theValidationRule != null)
                 result = _mapper.Map<IEnumerable<ValidationRuleUserRole>, IEnumerable<ValidationRuleUserRoleDto>>(_validationRuleUserRoleRepository

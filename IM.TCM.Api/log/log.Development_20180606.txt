@@ -1,0 +1,507 @@
+2018-06-06 11:18:49.113 +02:00 [ERR] An unhandled exception has occurred while executing the request
+Autofac.Core.DependencyResolutionException: An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = OrganizationController (ReflectionActivator), Services = [IM.TCM.Api.Controllers.OrganizationController], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = None, Ownership = OwnedByLifetimeScope ---> An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = OrganizationService (ReflectionActivator), Services = [IM.TCM.Services.Interfaces.IBaseService`1[[IM.TCM.Domain.Models.SalesOrganization, IM.TCM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], IM.TCM.Services.Interfaces.IOrganizationService], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = Shared, Ownership = OwnedByLifetimeScope ---> None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'IM.TCM.Services.OrganizationService' can be invoked with the available services and parameters:
+Cannot resolve parameter 'IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository organizationRepository' of constructor 'Void .ctor(IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository)'. (See inner exception for details.) (See inner exception for details.) ---> Autofac.Core.DependencyResolutionException: An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = OrganizationService (ReflectionActivator), Services = [IM.TCM.Services.Interfaces.IBaseService`1[[IM.TCM.Domain.Models.SalesOrganization, IM.TCM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], IM.TCM.Services.Interfaces.IOrganizationService], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = Shared, Ownership = OwnedByLifetimeScope ---> None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'IM.TCM.Services.OrganizationService' can be invoked with the available services and parameters:
+Cannot resolve parameter 'IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository organizationRepository' of constructor 'Void .ctor(IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository)'. (See inner exception for details.) ---> Autofac.Core.DependencyResolutionException: None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'IM.TCM.Services.OrganizationService' can be invoked with the available services and parameters:
+Cannot resolve parameter 'IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository organizationRepository' of constructor 'Void .ctor(IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository)'.
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   at Autofac.Core.Lifetime.LifetimeScope.GetOrCreateAndShare(Guid id, Func`1 creator)
+   at Autofac.Core.Resolving.InstanceLookup.Execute()
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, IComponentRegistration registration, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.InstanceLookup.Execute()
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, IComponentRegistration registration, IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(IComponentRegistration registration, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Mvc.Controllers.ServiceBasedControllerActivator.Create(ControllerContext actionContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2018-06-06 11:20:56.780 +02:00 [ERR] An unhandled exception has occurred while executing the request
+Autofac.Core.DependencyResolutionException: An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = OrganizationController (ReflectionActivator), Services = [IM.TCM.Api.Controllers.OrganizationController], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = None, Ownership = OwnedByLifetimeScope ---> An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = OrganizationService (ReflectionActivator), Services = [IM.TCM.Services.Interfaces.IBaseService`1[[IM.TCM.Domain.Models.SalesOrganization, IM.TCM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], IM.TCM.Services.Interfaces.IOrganizationService], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = Shared, Ownership = OwnedByLifetimeScope ---> None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'IM.TCM.Services.OrganizationService' can be invoked with the available services and parameters:
+Cannot resolve parameter 'IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository organizationRepository' of constructor 'Void .ctor(IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository)'. (See inner exception for details.) (See inner exception for details.) ---> Autofac.Core.DependencyResolutionException: An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = OrganizationService (ReflectionActivator), Services = [IM.TCM.Services.Interfaces.IBaseService`1[[IM.TCM.Domain.Models.SalesOrganization, IM.TCM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], IM.TCM.Services.Interfaces.IOrganizationService], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = Shared, Ownership = OwnedByLifetimeScope ---> None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'IM.TCM.Services.OrganizationService' can be invoked with the available services and parameters:
+Cannot resolve parameter 'IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository organizationRepository' of constructor 'Void .ctor(IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository)'. (See inner exception for details.) ---> Autofac.Core.DependencyResolutionException: None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'IM.TCM.Services.OrganizationService' can be invoked with the available services and parameters:
+Cannot resolve parameter 'IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository organizationRepository' of constructor 'Void .ctor(IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository)'.
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   at Autofac.Core.Lifetime.LifetimeScope.GetOrCreateAndShare(Guid id, Func`1 creator)
+   at Autofac.Core.Resolving.InstanceLookup.Execute()
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, IComponentRegistration registration, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.InstanceLookup.Execute()
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, IComponentRegistration registration, IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(IComponentRegistration registration, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Mvc.Controllers.ServiceBasedControllerActivator.Create(ControllerContext actionContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2018-06-06 11:21:26.307 +02:00 [ERR] An unhandled exception has occurred while executing the request
+Autofac.Core.DependencyResolutionException: An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = OrganizationController (ReflectionActivator), Services = [IM.TCM.Api.Controllers.OrganizationController], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = None, Ownership = OwnedByLifetimeScope ---> An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = OrganizationService (ReflectionActivator), Services = [IM.TCM.Services.Interfaces.IBaseService`1[[IM.TCM.Domain.Models.SalesOrganization, IM.TCM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], IM.TCM.Services.Interfaces.IOrganizationService], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = Shared, Ownership = OwnedByLifetimeScope ---> None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'IM.TCM.Services.OrganizationService' can be invoked with the available services and parameters:
+Cannot resolve parameter 'IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository organizationRepository' of constructor 'Void .ctor(IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository)'. (See inner exception for details.) (See inner exception for details.) ---> Autofac.Core.DependencyResolutionException: An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = OrganizationService (ReflectionActivator), Services = [IM.TCM.Services.Interfaces.IBaseService`1[[IM.TCM.Domain.Models.SalesOrganization, IM.TCM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], IM.TCM.Services.Interfaces.IOrganizationService], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = Shared, Ownership = OwnedByLifetimeScope ---> None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'IM.TCM.Services.OrganizationService' can be invoked with the available services and parameters:
+Cannot resolve parameter 'IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository organizationRepository' of constructor 'Void .ctor(IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository)'. (See inner exception for details.) ---> Autofac.Core.DependencyResolutionException: None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'IM.TCM.Services.OrganizationService' can be invoked with the available services and parameters:
+Cannot resolve parameter 'IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository organizationRepository' of constructor 'Void .ctor(IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository)'.
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   at Autofac.Core.Lifetime.LifetimeScope.GetOrCreateAndShare(Guid id, Func`1 creator)
+   at Autofac.Core.Resolving.InstanceLookup.Execute()
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, IComponentRegistration registration, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.InstanceLookup.Execute()
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, IComponentRegistration registration, IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(IComponentRegistration registration, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Mvc.Controllers.ServiceBasedControllerActivator.Create(ControllerContext actionContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2018-06-06 11:23:04.753 +02:00 [ERR] An unhandled exception has occurred while executing the request
+Autofac.Core.DependencyResolutionException: An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = OrganizationController (ReflectionActivator), Services = [IM.TCM.Api.Controllers.OrganizationController], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = None, Ownership = OwnedByLifetimeScope ---> An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = OrganizationService (ReflectionActivator), Services = [IM.TCM.Services.Interfaces.IBaseService`1[[IM.TCM.Domain.Models.SalesOrganization, IM.TCM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], IM.TCM.Services.Interfaces.IOrganizationService], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = Shared, Ownership = OwnedByLifetimeScope ---> None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'IM.TCM.Services.OrganizationService' can be invoked with the available services and parameters:
+Cannot resolve parameter 'IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository organizationRepository' of constructor 'Void .ctor(IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository)'. (See inner exception for details.) (See inner exception for details.) ---> Autofac.Core.DependencyResolutionException: An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = OrganizationService (ReflectionActivator), Services = [IM.TCM.Services.Interfaces.IBaseService`1[[IM.TCM.Domain.Models.SalesOrganization, IM.TCM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], IM.TCM.Services.Interfaces.IOrganizationService], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = Shared, Ownership = OwnedByLifetimeScope ---> None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'IM.TCM.Services.OrganizationService' can be invoked with the available services and parameters:
+Cannot resolve parameter 'IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository organizationRepository' of constructor 'Void .ctor(IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository)'. (See inner exception for details.) ---> Autofac.Core.DependencyResolutionException: None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'IM.TCM.Services.OrganizationService' can be invoked with the available services and parameters:
+Cannot resolve parameter 'IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository organizationRepository' of constructor 'Void .ctor(IM.TCM.Data.Repositories.Interfaces.IOrganizationRepository)'.
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   at Autofac.Core.Lifetime.LifetimeScope.GetOrCreateAndShare(Guid id, Func`1 creator)
+   at Autofac.Core.Resolving.InstanceLookup.Execute()
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, IComponentRegistration registration, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.InstanceLookup.Execute()
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, IComponentRegistration registration, IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(IComponentRegistration registration, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Mvc.Controllers.ServiceBasedControllerActivator.Create(ControllerContext actionContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2018-06-06 11:28:47.997 +02:00 [WRN] Heartbeat took longer than ""00:00:01"" at ""2018-06-06T09:28:47.9224073+00:00"".
+2018-06-06 14:23:21.821 +02:00 [ERR] Failed executing DbCommand (73ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [UserAuthorization] ADD CONSTRAINT [FK_UserAuthorization_SalesOrganization_OrganizationId] FOREIGN KEY ([OrganizationId]) REFERENCES [SalesOrganization] ([Id]) ON DELETE NO ACTION;
+System.Data.SqlClient.SqlException (0x80131904): The ALTER TABLE statement conflicted with the FOREIGN KEY constraint "FK_UserAuthorization_SalesOrganization_OrganizationId". The conflict occurred in database "JWTDemo", table "dbo.SalesOrganization", column 'Id'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:0bf49d32-30c8-4a08-9fe8-351d889150d1
+Error Number:547,State:0,Class:16
+2018-06-06 14:28:08.702 +02:00 [WRN] User 4 is already in role SuperAdmin.
+2018-06-06 14:28:19.592 +02:00 [ERR] An unhandled exception has occurred while executing the request
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+IEnumerable`1 -> IEnumerable`1
+System.Collections.Generic.IEnumerable`1[[IM.TCM.Domain.Models.ApplicationUser, IM.TCM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.IEnumerable`1[[IM.TCM.Domain.Dtos.UserDto, IM.TCM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] ---> AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+ApplicationUser -> UserDto
+IM.TCM.Domain.Models.ApplicationUser -> IM.TCM.Domain.Dtos.UserDto
+
+Type Map configuration:
+ApplicationUser -> UserDto
+IM.TCM.Domain.Models.ApplicationUser -> IM.TCM.Domain.Dtos.UserDto
+
+Property:
+Authorizations ---> AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+UserAuthorization -> UserAuthorizationDto
+IM.TCM.Domain.Models.UserAuthorization -> IM.TCM.Domain.Dtos.UserAuthorizationDto
+
+Type Map configuration:
+UserAuthorization -> UserAuthorizationDto
+IM.TCM.Domain.Models.UserAuthorization -> IM.TCM.Domain.Dtos.UserAuthorizationDto
+
+Property:
+Organization ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+SalesOrganization -> MasterDto
+IM.TCM.Domain.Models.SalesOrganization -> IM.TCM.Domain.Dtos.MasterDto
+   at lambda_method(Closure , SalesOrganization , MasterDto , ResolutionContext )
+   at AutoMapper.ResolutionContext.Map[TSource,TDestination](TSource source, TDestination destination)
+   at lambda_method(Closure , IEnumerable`1 , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , IEnumerable`1 , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , IEnumerable`1 , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , IEnumerable`1 , IEnumerable`1 , ResolutionContext )
+   at AutoMapper.Mapper.AutoMapper.IMapper.Map[TSource,TDestination](TSource source)
+   at IM.TCM.Services.ApplicationUserService.GetAllUsers() in C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Services\ApplicationUserService.cs:line 86
+   at IM.TCM.Api.Controllers.UsersController.GetUsers() in C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Api\Controllers\UsersController.cs:line 38
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2018-06-06 14:29:57.811 +02:00 [ERR] An unhandled exception has occurred while executing the request
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+IEnumerable`1 -> IEnumerable`1
+System.Collections.Generic.IEnumerable`1[[IM.TCM.Domain.Models.ApplicationUser, IM.TCM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.IEnumerable`1[[IM.TCM.Domain.Dtos.UserDto, IM.TCM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] ---> AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+ApplicationUser -> UserDto
+IM.TCM.Domain.Models.ApplicationUser -> IM.TCM.Domain.Dtos.UserDto
+
+Type Map configuration:
+ApplicationUser -> UserDto
+IM.TCM.Domain.Models.ApplicationUser -> IM.TCM.Domain.Dtos.UserDto
+
+Property:
+Authorizations ---> AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+UserAuthorization -> UserAuthorizationDto
+IM.TCM.Domain.Models.UserAuthorization -> IM.TCM.Domain.Dtos.UserAuthorizationDto
+
+Type Map configuration:
+UserAuthorization -> UserAuthorizationDto
+IM.TCM.Domain.Models.UserAuthorization -> IM.TCM.Domain.Dtos.UserAuthorizationDto
+
+Property:
+Organization ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+SalesOrganization -> MasterDto
+IM.TCM.Domain.Models.SalesOrganization -> IM.TCM.Domain.Dtos.MasterDto
+   at lambda_method(Closure , SalesOrganization , MasterDto , ResolutionContext )
+   at AutoMapper.ResolutionContext.Map[TSource,TDestination](TSource source, TDestination destination)
+   at lambda_method(Closure , IEnumerable`1 , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , IEnumerable`1 , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , IEnumerable`1 , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , IEnumerable`1 , IEnumerable`1 , ResolutionContext )
+   at AutoMapper.Mapper.AutoMapper.IMapper.Map[TSource,TDestination](TSource source)
+   at IM.TCM.Services.ApplicationUserService.GetAllUsers() in C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Services\ApplicationUserService.cs:line 86
+   at IM.TCM.Api.Controllers.UsersController.GetUsers() in C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Api\Controllers\UsersController.cs:line 38
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2018-06-06 14:39:10.579 +02:00 [WRN] User 22 is not in role SuperAdmin.
+2018-06-06 14:39:37.985 +02:00 [WRN] User 23 is not in role SuperAdmin.
+2018-06-06 14:40:02.726 +02:00 [WRN] User 24 is not in role SuperAdmin.
+2018-06-06 14:40:49.673 +02:00 [WRN] User 19 is not in role SuperAdmin.
+2018-06-06 14:41:04.717 +02:00 [WRN] User 18 is not in role SuperAdmin.
+2018-06-06 14:42:09.112 +02:00 [WRN] User 4 is already in role SuperAdmin.
+2018-06-06 14:46:18.964 +02:00 [WRN] User 17 is not in role SuperAdmin.
+2018-06-06 14:52:46.656 +02:00 [WRN] User 17 is not in role SuperAdmin.
+2018-06-06 14:55:59.322 +02:00 [WRN] User 17 is not in role SuperAdmin.
+2018-06-06 14:56:37.291 +02:00 [WRN] User 17 is not in role SuperAdmin.
+2018-06-06 15:52:42.819 +02:00 [ERR] Failed executing DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Template] ADD CONSTRAINT [FK_Template_SalesOrganization_OrganizationId] FOREIGN KEY ([OrganizationId]) REFERENCES [SalesOrganization] ([Id]) ON DELETE NO ACTION;
+System.Data.SqlClient.SqlException (0x80131904): The ALTER TABLE statement conflicted with the FOREIGN KEY constraint "FK_Template_SalesOrganization_OrganizationId". The conflict occurred in database "JWTDemo", table "dbo.SalesOrganization", column 'Id'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:a40ad8af-3cb2-4e4b-b0ef-8ea28761bbe8
+Error Number:547,State:0,Class:16
+2018-06-06 15:53:24.755 +02:00 [ERR] Failed executing DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [ValidationRule] ADD CONSTRAINT [FK_ValidationRule_SalesOrganization_OrganizationId] FOREIGN KEY ([OrganizationId]) REFERENCES [SalesOrganization] ([Id]) ON DELETE NO ACTION;
+System.Data.SqlClient.SqlException (0x80131904): The ALTER TABLE statement conflicted with the FOREIGN KEY constraint "FK_ValidationRule_SalesOrganization_OrganizationId". The conflict occurred in database "JWTDemo", table "dbo.SalesOrganization", column 'Id'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:3e2a6e0a-e68a-429a-a69e-b519ba2d6c61
+Error Number:547,State:0,Class:16
+2018-06-06 15:56:57.077 +02:00 [ERR] An unhandled exception has occurred while executing the request
+System.InvalidOperationException: An exception was thrown while attempting to evaluate a LINQ query parameter expression. To show additional information call EnableSensitiveDataLogging() when overriding DbContext.OnConfiguring. ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at lambda_method(Closure )
+   at Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal.ParameterExtractingExpressionVisitor.Evaluate(Expression expression, String& parameterName)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal.ParameterExtractingExpressionVisitor.Evaluate(Expression expression, String& parameterName)
+   at Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal.ParameterExtractingExpressionVisitor.TryExtractParameter(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal.ParameterExtractingExpressionVisitor.VisitMember(MemberExpression memberExpression)
+   at System.Linq.Expressions.MemberExpression.Accept(ExpressionVisitor visitor)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at System.Linq.Expressions.ExpressionVisitor.VisitBinary(BinaryExpression node)
+   at Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal.ParameterExtractingExpressionVisitor.VisitBinary(BinaryExpression binaryExpression)
+   at System.Linq.Expressions.BinaryExpression.Accept(ExpressionVisitor visitor)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal.ParameterExtractingExpressionVisitor.VisitBinary(BinaryExpression binaryExpression)
+   at System.Linq.Expressions.BinaryExpression.Accept(ExpressionVisitor visitor)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal.ParameterExtractingExpressionVisitor.VisitBinary(BinaryExpression binaryExpression)
+   at System.Linq.Expressions.BinaryExpression.Accept(ExpressionVisitor visitor)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal.ParameterExtractingExpressionVisitor.VisitBinary(BinaryExpression binaryExpression)
+   at System.Linq.Expressions.BinaryExpression.Accept(ExpressionVisitor visitor)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal.ParameterExtractingExpressionVisitor.VisitBinary(BinaryExpression binaryExpression)
+   at System.Linq.Expressions.BinaryExpression.Accept(ExpressionVisitor visitor)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at System.Linq.Expressions.ExpressionVisitor.VisitLambda[T](Expression`1 node)
+   at Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal.ParameterExtractingExpressionVisitor.VisitLambda[T](Expression`1 node)
+   at System.Linq.Expressions.Expression`1.Accept(ExpressionVisitor visitor)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at System.Linq.Expressions.ExpressionVisitor.VisitUnary(UnaryExpression node)
+   at Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal.ParameterExtractingExpressionVisitor.VisitUnary(UnaryExpression unaryExpression)
+   at System.Linq.Expressions.UnaryExpression.Accept(ExpressionVisitor visitor)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at System.Dynamic.Utils.ExpressionVisitorUtils.VisitArguments(ExpressionVisitor visitor, IArgumentProvider nodes)
+   at System.Linq.Expressions.ExpressionVisitor.VisitMethodCall(MethodCallExpression node)
+   at Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal.ParameterExtractingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at System.Linq.Expressions.MethodCallExpression.Accept(ExpressionVisitor visitor)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal.ParameterExtractingExpressionVisitor.ExtractParameters(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExtractParameters(Expression query, QueryContext queryContext, Boolean parameterize)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.Execute[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.Execute[TResult](Expression expression)
+   at Remotion.Linq.QueryableBase`1.GetEnumerator()
+   at System.Collections.Generic.List`1.AddEnumerable(IEnumerable`1 enumerable)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at IM.TCM.Data.Repositories.BaseRepository`1.Find(Expression`1 where, Func`2 orderBy, Expression`1 selector, Func`2 include) in C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Data\Repositories\BaseRepository.cs:line 92
+   at IM.TCM.Services.ValidationRuleService.GetValidationRuleUserRoles(ValidationRuleDto validationRule) in C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Services\ValidationRuleService.cs:line 122
+   at IM.TCM.Api.Controllers.ValidationRuleController.GetValidationRuleUserRoles(ValidationRuleDto validationRule) in C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Api\Controllers\ValidationRuleController.cs:line 35
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()

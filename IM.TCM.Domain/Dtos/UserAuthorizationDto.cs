@@ -20,5 +20,7 @@ namespace IM.TCM.Domain.Dtos
         public MasterDto CompanyCode { get; set; }
 
         public MasterDto ProcessType { get; set; }
+
+        public MasterDto Organization { get; set; }
     }
 }

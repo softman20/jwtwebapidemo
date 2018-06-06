@@ -29,12 +29,12 @@ namespace IM.TCM.Services
         {
             //get template id
             int templateId = 0;
-            Template theTemplate = _templateRepository.Find(e => e.BUId == selectionCriteria.BusinessUnit.Id && e.CompanyId == selectionCriteria.CompanyCode.Id && e.ProcessTypeId == selectionCriteria.ProcessTypeId
+            Template theTemplate = _templateRepository.Find(e => e.BUId == selectionCriteria.BusinessUnit.Id && e.CompanyId == selectionCriteria.CompanyCode.Id && e.OrganizationId == selectionCriteria.Organization.Id 
+            && e.ProcessTypeId == selectionCriteria.ProcessTypeId
              && e.AccountGroupId == selectionCriteria.AccountGroup.Id).FirstOrDefault();
             if (theTemplate != null)
             {
                 templateId = theTemplate.Id;
-
                 IEnumerable<TemplateControlDto> result = _templateControlRepository.GetTemplateControlsWithConfig(templateId, selectionCriteria);
                 return result;
             }
@@ -48,7 +48,8 @@ namespace IM.TCM.Services
                 BUId = selectionCriteria.BusinessUnit.Id,
                 CompanyId = selectionCriteria.CompanyCode.Id,
                 ProcessTypeId = selectionCriteria.ProcessTypeId,
-                AccountGroupId = selectionCriteria.AccountGroup.Id
+                AccountGroupId = selectionCriteria.AccountGroup.Id,
+                OrganizationId =selectionCriteria.Organization.Id
             };
             _templateRepository.Add(newTemplate);
             _templateRepository.SaveChanges();

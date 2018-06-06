@@ -11,9 +11,10 @@ using System;
 namespace IM.TCM.Data.Migrations
 {
     [DbContext(typeof(TCMContext))]
-    partial class TCMContextModelSnapshot : ModelSnapshot
+    [Migration("20180606135210_AddOrganizationValidationAndTemplate")]
+    partial class AddOrganizationValidationAndTemplate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

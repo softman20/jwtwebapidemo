@@ -80,7 +80,8 @@ namespace IM.TCM.Services
             var allUsers = this._applicationUserRepository.Find(include: e => e.Include(p => p.Authorizations).ThenInclude(p => p.Role)
                                          .Include(p => p.Authorizations).ThenInclude(p => p.BusinessUnit)
                                          .Include(p => p.Authorizations).ThenInclude(p => p.CompanyCode)
-                                         .Include(p => p.Authorizations).ThenInclude(p => p.ProcessType)).OrderBy(e=>e.FirstName);
+                                         .Include(p => p.Authorizations).ThenInclude(p => p.ProcessType)
+                                         .Include(p => p.Authorizations).ThenInclude(p => p.Organization)).OrderBy(e=>e.FirstName);
 
             return _mapper.Map<IEnumerable<ApplicationUser>, IEnumerable<UserDto>>(allUsers);
         }
@@ -90,7 +91,8 @@ namespace IM.TCM.Services
             ApplicationUser IdentityUser = this._applicationUserRepository.Find(where: e => e.SgId == sgId, include: e => e.Include(p => p.Authorizations).ThenInclude(p => p.Role)
                                               .Include(p => p.Authorizations).ThenInclude(p => p.BusinessUnit)
                                               .Include(p => p.Authorizations).ThenInclude(p => p.CompanyCode)
-                                              .Include(p => p.Authorizations).ThenInclude(p => p.ProcessType)).FirstOrDefault();
+                                              .Include(p => p.Authorizations).ThenInclude(p => p.ProcessType)
+                                              .Include(p => p.Authorizations).ThenInclude(p => p.Organization)).FirstOrDefault();
 
             return _mapper.Map<ApplicationUser, UserDto>(IdentityUser);
         }
@@ -127,7 +129,8 @@ namespace IM.TCM.Services
                         BUId = authorization.BusinessUnit.Id,
                         RoleId = authorization.Role.Id,
                         CompanyId = authorization.CompanyCode.Id,
-                        ProcessTypeId = authorization.ProcessTypeId
+                        ProcessTypeId = authorization.ProcessTypeId,
+                        OrganizationId=authorization.Organization.Id
                     });
                 }
                 _userAuthorizationRepository.SaveChanges();
@@ -179,7 +182,8 @@ namespace IM.TCM.Services
                         BUId = authorization.BusinessUnit.Id,
                         RoleId = authorization.Role.Id,
                         CompanyId = authorization.CompanyCode.Id,
-                        ProcessTypeId = authorization.ProcessTypeId
+                        ProcessTypeId = authorization.ProcessTypeId,
+                        OrganizationId=authorization.Organization.Id
                     });
                 }
                 _userAuthorizationRepository.SaveChanges();
