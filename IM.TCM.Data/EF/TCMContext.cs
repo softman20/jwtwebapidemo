@@ -28,6 +28,7 @@ namespace IM.TCM.Data.EF
             modelBuilder.ApplyConfiguration(new UserAuthorizationConfiguration());
             modelBuilder.ApplyConfiguration(new ValidationRuleConfiguration());
             modelBuilder.ApplyConfiguration(new TemplateConfiguration());
+            modelBuilder.ApplyConfiguration(new ControlMasterDataConfiguration());
         }
 
         public override int SaveChanges()
@@ -69,5 +70,7 @@ namespace IM.TCM.Data.EF
         public DbSet<Template> Template { get; set; }
         public DbSet<TemplateControlConfig> TemplateControlConfig { get; set; }
         public DbSet<SalesOrganization> SalesOrganization { get; set; }
+        public DbSet<ControlType> ControlType { get; set; }
+        public DbSet<ControlMasterData> ControlMasterData { get; set; }
     }
 }

@@ -1,0 +1,219 @@
+2018-06-07 16:31:47.276 +02:00 [ERR] Failed executing DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ControlMasterData] (
+    [Id] int NOT NULL IDENTITY,
+    [BUId] int NOT NULL,
+    [Code] nvarchar(max) NULL,
+    [CreatedBy] nvarchar(max) NULL,
+    [CreatedDate] datetime2 NULL,
+    [IsActive] bit NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [ProcessTypeId] int NOT NULL,
+    [TemplateControlId] int NOT NULL,
+    [UpdatedBy] nvarchar(max) NULL,
+    [UpdatedDate] datetime2 NULL,
+    CONSTRAINT [PK_ControlMasterData] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ControlMasterData_BusinessUnit_BUId] FOREIGN KEY ([BUId]) REFERENCES [BusinessUnit] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_ControlMasterData_ProcessType_ProcessTypeId] FOREIGN KEY ([ProcessTypeId]) REFERENCES [ProcessType] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_ControlMasterData_TemplateControl_TemplateControlId] FOREIGN KEY ([TemplateControlId]) REFERENCES [TemplateControl] ([Id]) ON DELETE CASCADE
+);
+System.Data.SqlClient.SqlException (0x80131904): Introducing FOREIGN KEY constraint 'FK_ControlMasterData_TemplateControl_TemplateControlId' on table 'ControlMasterData' may cause cycles or multiple cascade paths. Specify ON DELETE NO ACTION or ON UPDATE NO ACTION, or modify other FOREIGN KEY constraints.
+Could not create constraint. See previous errors.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:f76fd756-49b2-49d4-bea0-030a63248e88
+Error Number:1785,State:0,Class:16
+2018-06-07 16:48:39.536 +02:00 [ERR] Failed executing DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [TemplateControlConfig] ADD CONSTRAINT [FK_TemplateControlConfig_ControlType_ControlTypeId] FOREIGN KEY ([ControlTypeId]) REFERENCES [ControlType] ([Id]) ON DELETE CASCADE;
+System.Data.SqlClient.SqlException (0x80131904): The ALTER TABLE statement conflicted with the FOREIGN KEY constraint "FK_TemplateControlConfig_ControlType_ControlTypeId". The conflict occurred in database "JWTDemo", table "dbo.ControlType", column 'Id'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:fc4c382b-6b76-49b5-a30a-40255cecd7b8
+Error Number:547,State:0,Class:16
+2018-06-07 17:44:26.604 +02:00 [ERR] An unhandled exception has occurred while executing the request
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at IM.TCM.Services.TemplateManagementService.UpdateTemplate(IEnumerable`1 templateControls) in C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Services\TemplateManagementService.cs:line 64
+   at IM.TCM.Api.Controllers.TemplateManagementController.UpdateTemplate(IEnumerable`1 templateControls) in C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Api\Controllers\TemplateManagementController.cs:line 47
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2018-06-07 17:44:58.566 +02:00 [ERR] An unhandled exception has occurred while executing the request
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at IM.TCM.Services.TemplateManagementService.UpdateTemplate(IEnumerable`1 templateControls) in C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Services\TemplateManagementService.cs:line 64
+   at IM.TCM.Api.Controllers.TemplateManagementController.UpdateTemplate(IEnumerable`1 templateControls) in C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Api\Controllers\TemplateManagementController.cs:line 47
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2018-06-07 17:45:49.597 +02:00 [ERR] An unhandled exception has occurred while executing the request
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at IM.TCM.Services.TemplateManagementService.UpdateTemplate(IEnumerable`1 templateControls) in C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Services\TemplateManagementService.cs:line 64
+   at IM.TCM.Api.Controllers.TemplateManagementController.UpdateTemplate(IEnumerable`1 templateControls) in C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Api\Controllers\TemplateManagementController.cs:line 47
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2018-06-07 17:51:50.635 +02:00 [ERR] An unhandled exception has occurred while executing the request
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at IM.TCM.Services.TemplateManagementService.UpdateTemplate(IEnumerable`1 templateControls) in C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Services\TemplateManagementService.cs:line 64
+   at IM.TCM.Api.Controllers.TemplateManagementController.UpdateTemplate(IEnumerable`1 templateControls) in C:\Users\h7707132\source\repos\IM.TCM\IM.TCM.Api\Controllers\TemplateManagementController.cs:line 47
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()

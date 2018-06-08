@@ -11,10 +11,12 @@ namespace IM.TCM.Domain.Dtos
         public string Label { get; set; }
         public string SapTable { get; set; }
         public string SapField { get; set; }
-
+        public string Value { get; set; }
         public int ProcessTypeId { get; set; }
         public int BUId { get; set; }
 
         public TemplateControlConfigDto TemplateControlConfig { get; set; }
+
+        public IEnumerable<MasterDto> ControlMasterData { get; set; }
     }
 }

@@ -6,20 +6,20 @@ using System.Text;
 
 namespace IM.TCM.Domain.Models
 {
-    public class TemplateControl:BaseEntity
+    public class ControlMasterData : BaseEntity
     {
-        public string Label { get; set; }
-        public string SapTable { get; set; }
-        public string SapField { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
 
         public int ProcessTypeId { get; set; }
         public int BUId { get; set; }
+        public int TemplateControlId { get; set; }
 
         [ForeignKey("ProcessTypeId")]
         public virtual ProcessType ProcessType { get; set; }
         [ForeignKey("BUId")]
         public virtual BusinessUnit BusinessUnit { get; set; }
-
-        public virtual ICollection<ControlMasterData> ControlMasterData { get; set; }
+        [ForeignKey("TemplateControlId")]
+        public virtual TemplateControl TemplateControl { get; set; }
     }
 }

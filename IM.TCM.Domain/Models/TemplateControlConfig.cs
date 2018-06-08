@@ -19,7 +19,7 @@ namespace IM.TCM.Domain.Models
         public bool AlterableApprover2 { get; set; }
         public bool AlterableApprover3 { get; set; }
         public string DefaultValue { get; set; }
-
+        public int ControlTypeId { get; set; }
 
 
         public int TemplateId { get; set; }
@@ -30,5 +30,8 @@ namespace IM.TCM.Domain.Models
 
         [ForeignKey("TemplateControlId")]
         public virtual TemplateControl TemplateControl { get; set; }
+
+        [ForeignKey("ControlTypeId")]
+        public virtual ControlType ControlType { get; set; }
     }
 }

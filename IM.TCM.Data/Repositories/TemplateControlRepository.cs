@@ -23,7 +23,9 @@ namespace IM.TCM.Data.Repositories
           
                 res = from tc in allControls
                       from tcc in Context.TemplateControlConfig.Where(e => e.TemplateId == templateId && e.TemplateControlId==tc.Id).DefaultIfEmpty()
+                      //from cmd in .DefaultIfEmpty()
                       select new TemplateControlDto { Label=tc.Label,SapField=tc.SapField,SapTable=tc.SapTable,
+                      ControlMasterData= _mapper.Map<IEnumerable<ControlMasterData>, IEnumerable<MasterDto>>(Context.ControlMasterData.Where(e => e.BUId == selectionCriteria.BusinessUnit.Id && e.ProcessTypeId == selectionCriteria.ProcessTypeId && e.TemplateControlId == tc.Id)),
                           TemplateControlConfig = tcc!=null? _mapper.Map< TemplateControlConfig, TemplateControlConfigDto>( tcc):new TemplateControlConfigDto(templateId,tc.Id)};
            
             return res;

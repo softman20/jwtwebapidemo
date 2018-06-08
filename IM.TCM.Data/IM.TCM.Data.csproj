@@ -59,6 +59,7 @@
     <Compile Remove="Migrations\20180528135946_validationRule.cs" />
     <Compile Remove="Migrations\20180529134532_addRequestType.cs" />
     <Compile Remove="Migrations\20180529134704_addRequestType.cs" />
+    <Compile Remove="Migrations\20180607143125_addControlMasterData.cs" />
   </ItemGroup>
 
   <ItemGroup>

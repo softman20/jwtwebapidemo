@@ -55,6 +55,11 @@ namespace IM.TCM.Core.Utilities
             CreateMap<TemplateControlConfigDto, TemplateControlConfig>()
                 .ForMember(e=>e.Id,m=>m.UseValue(0));
             CreateMap<TemplateControlConfig, TemplateControlConfigDto>();
+
+            CreateMap<MasterDto, ControlMasterData>();
+            CreateMap<ControlMasterData, MasterDto>();
+
+            
         }
 
 
